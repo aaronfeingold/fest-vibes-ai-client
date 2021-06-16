@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ArtistEvent = ({ae}) => {
-
+  
   let {id, artist_name, event_href} = ae 
 
   return(
