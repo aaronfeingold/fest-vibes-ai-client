@@ -2,7 +2,7 @@ import React from 'react'
 
 const ArtistEvent = ({ae}) => {
 
-  let {artist_name, event_href} = ae 
+  let {id, artist_name, event_href} = ae 
 
   return(
     <div className="artist-event-card" id={id} style={{ width: '18rem' }}>

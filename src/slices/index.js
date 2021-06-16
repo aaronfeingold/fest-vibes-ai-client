@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import postReducer from './postSlice'
+import aesReducer from './ArtistEvents.slice'
 
 const rootReducer =  combineReducers({
-  posts: postReducer
+  aes: aesReducer
 })
 
 export default rootReducer

@@ -5,7 +5,7 @@ import ArtistEvent from "../cards/ArtistEvent.card"
 import ErrorMessage from '../errors/ErrorMessage';
 
 const ArtistEventsList = ({apiStatus}) => {
-  let ae_data = useSelector(state => state.aes.posts)
+  let ae_data = useSelector(state => state.aes.artist_events)
   let apiErrorMessage = useSelector(state => state.aes.error);
 
   return(

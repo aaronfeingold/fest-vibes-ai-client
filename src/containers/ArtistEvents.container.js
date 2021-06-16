@@ -3,13 +3,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchArtistEvents } from '../services/ArtistEvents.service';
 import ArtistEventsList from "../components/lists/ArtistEvents.list"
 
-const initialPostState = { id: null, title: ""}
 
-function getArtistEvents() {
+
+function ArtistEvents() {
   const dispatch = useDispatch()
-	const apiStatus = useSelector(state => state.posts.status);
+
+	const apiStatus = useSelector(state => state.aes.status);
 	
-	fetchArtistEvents()
+	useEffect(() => {
+		dispatch(fetchArtistEvents())
+	})
+	
 
   return(
 		<div className="container-fluid">
@@ -18,4 +22,4 @@ function getArtistEvents() {
 		);
 }
 
-export default getArtistEvents
+export default ArtistEvents

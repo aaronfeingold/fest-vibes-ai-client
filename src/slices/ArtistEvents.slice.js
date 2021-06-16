@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { saveNewPost } from '../services/ArtistEvents.service'
+import { fetchArtistEvents } from '../services/ArtistEvents.service'
 
 // set initial state of slice of store
 export const initialState = {
@@ -9,14 +9,14 @@ export const initialState = {
 };
 
 // a slice of root reducer
-const aesSlice = createSlice({
+const artistEventsSlice = createSlice({
   name: 'aes',
   initialState,
   reducers: {
     resetStatus(state) {state.status = 'idle'}
   },
   extraReducers: {
-    [getArtistEvents.fulfilled]: (state, action) => {
+    [fetchArtistEvents.fulfilled]: (state, action) => {
       const aes = action.payload;
       const errors = (aes["errors"]) ? aes["errors"] : null;
       if (!!errors){
@@ -26,13 +26,13 @@ const aesSlice = createSlice({
         state.artist_events.push(aes)
       }
     },
-    [getArtistEvents.rejected]: (state, action) => {
+    [fetchArtistEvents.rejected]: (state, action) => {
       state.status = 'failed'
       state.error = action.error
   },
 }
 });
 
-export const { resetStatus } = postSlice.actions
-export default aesSlice.reducer
+export const { resetStatus } = artistEventsSlice.actions
+export default artistEventsSlice.reducer
 

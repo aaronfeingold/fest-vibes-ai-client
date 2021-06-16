@@ -1,11 +1,11 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import AddPost from './containers/AddPost'
+import ArtistEvents from './containers/ArtistEvents.container'
 
 const App = () =>(
   <Router>
-    <Route path="/" component={AddPost} />
+    <Route path="/" component={ArtistEvents} />
   </Router>
 )
 
