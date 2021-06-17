@@ -1,6 +1,6 @@
-## React-Redux Example with RTK
+## OZ-LIVE-RE-WIRE
 
-This project utilizes the many meta abstractions of redux to create a simple client side app.
+This react app will scrape the livewire for music events, and list by Artist in alphabetical order.
 
 To get started, fork and clone the repository.
  
