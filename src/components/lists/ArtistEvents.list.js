@@ -11,9 +11,7 @@ const ArtistEventsList = ({apiStatus}) => {
 
   let cards = ae_obs.map(ae => <ArtistEvent key={nanoid()} ae={ae}/>)
   
-  let sorted_cards = cards.sort((a,b)=> 
-    (a.props.ae.artist_name > b.props.ae.artist_name) ? 1 : -1
-  )
+  let sorted_cards = cards.sort((a,b)=> (Object.keys(a.props.ae) > Object.keys(b.props.ae)) ? 1 : -1)
 
   return(
     <>
