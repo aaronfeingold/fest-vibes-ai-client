@@ -16,7 +16,7 @@ https://github.com/aaronfeingold/express-validator-proj
 
 Deployed at:
 
-forthcoming
+https://oz-live-re-wire.netlify.app/
 
 ## Available Scripts
 
