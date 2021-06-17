@@ -7,19 +7,9 @@ import ErrorMessage from '../errors/ErrorMessage';
 const ArtistEventsList = ({apiStatus}) => {
   let apiErrorMessage = useSelector(state => state.aes.error);
   
-  let ae_data = useSelector(state => state.aes.artist_events)
-  let ae_objs = ae_data[0]
-  
-  let aes = []
+  let ae_obs = useSelector(state => state.aes.artist_events)
 
-  for (var key in ae_objs) {
-    if (ae_objs.hasOwnProperty(key)){
-      let ae_obj = ae_objs[key]
-      aes.push(ae_obj)
-    }
-  }
-
-  let cards = aes.map(ae => <ArtistEvent key={nanoid()} ae={ae}/>)
+  let cards = ae_obs.map(ae => <ArtistEvent key={nanoid()} ae={ae}/>)
   
   let sorted_cards = cards.sort((a,b)=> 
     (a.props.ae.artist_name > b.props.ae.artist_name) ? 1 : -1

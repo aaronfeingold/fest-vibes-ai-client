@@ -23,7 +23,7 @@ const artistEventsSlice = createSlice({
         state.status = 'failed'
         state.error = errors
       } else {
-        state.artist_events.push(aes)
+        state.artist_events = aes.data
       }
     },
     [fetchArtistEvents.rejected]: (state, action) => {
