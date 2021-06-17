@@ -16,7 +16,7 @@ https://github.com/aaronfeingold/express-validator-proj
 
 Deployed at:
 
-https://code-willing-frontend.netlify.app
+forthcoming
 
 ## Available Scripts
 
