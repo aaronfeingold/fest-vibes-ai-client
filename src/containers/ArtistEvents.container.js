@@ -17,6 +17,7 @@ function ArtistEvents() {
 
   return(
 		<div className="container-fluid">
+			<h3>This is your OZ Live-re-Wire</h3>
 			<ArtistEventsList apiStatus={apiStatus}/>
 		</div>
 		);

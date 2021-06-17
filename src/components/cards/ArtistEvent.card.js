@@ -12,7 +12,7 @@ const ArtistEvent = ({ae}) => {
             {artist_name}
           </li>
           <li className="card-title event-href">
-            <button onClick={()=> window.open(`https://www.wwoz.org${event_href}`, "_blank")}>Details Here</button>
+            <button className = "btn btn-primary"onClick={()=> window.open(`https://www.wwoz.org${event_href}`, "_blank")}>Details Here</button>
           </li>
         </ul>
       </div>
