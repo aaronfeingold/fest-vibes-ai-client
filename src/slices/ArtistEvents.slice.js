@@ -3,7 +3,9 @@ import { fetchArtistEvents } from '../services/ArtistEvents.service'
 
 // set initial state of slice of store
 export const initialState = {
-  status: 'idle',
+  apiStatus: 'idle',
+  filterStatus: null,
+  query: "",
   error: null,
   artist_events: [],
 };
@@ -13,7 +15,8 @@ const artistEventsSlice = createSlice({
   name: 'aes',
   initialState,
   reducers: {
-    resetStatus(state) {state.status = 'idle'}
+    setFilterStatus(state, action) {state.filterStatus = action.payload},
+    updateQuery(state, action) {state.query = action.payload}
   },
   extraReducers: {
     [fetchArtistEvents.fulfilled]: (state, action) => {
@@ -33,6 +36,6 @@ const artistEventsSlice = createSlice({
 }
 });
 
-export const { resetStatus } = artistEventsSlice.actions
+export const { setFilterStatus, updateQuery } = artistEventsSlice.actions
 export default artistEventsSlice.reducer
 
