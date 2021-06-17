@@ -14,7 +14,7 @@ export const fetchArtistEvents = createAsyncThunk(
     const artist_events = {}
     $(links).each(function(i, link){
       let event_href = $(link).attr('href')
-      if (event_href != undefined && event_href.includes("events") == true){
+      if (event_href !== undefined && event_href.includes("events") === true){
           let artist_event = {}
           let artist_name = $(link).text().replace(/\s+/g, '')
           artist_event["artist_name"] = artist_name

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const api = axios.create({
-  baseURL: "http://localhost:8080/api/artist-events",
+  baseURL: "https://cors-anywhere.herokuapp.com/https://www.wwoz.org/calendar/livewire-music",
   headers: {
     "Content-type": "application/json",
     "Access-Control-Allow-Origin": "*",
