@@ -13,16 +13,12 @@ const ArtistEventsList = ({apiStatus, apiErrorMessage, query, filterStatus}) => 
 
   if (filterStatus === true) {
     let findAlike = query.toLowerCase()
-    let filtedCards = sorted_cards.filter((card) => {
+    let filteredCards = cards.filter((card) => {
       let ae = card.props.ae
       let artist_name = Object.keys(ae)[0]
-        if (artist_name.includes(findAlike)){
-          return card
-        }
-    
+      return artist_name.includes(findAlike)
     })
-
-    sorted_cards = [...filtedCards]
+    return sorted_cards = filteredCards
   }
  
   return(
