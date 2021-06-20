@@ -31,7 +31,7 @@ const artistEventsSlice = createSlice({
     },
     [fetchArtistEvents.rejected]: (state, action) => {
       state.status = 'failed'
-      state.error = action.error
+      return { ...state, error: action.error}
   },
 }
 });
