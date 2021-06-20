@@ -19,11 +19,12 @@ const ArtistEventsList = ({apiStatus, apiErrorMessage, query, filterStatus}) => 
       let artist_name = Object.keys(ae)[0]
         if (artist_name.includes(findAlike)){
           return card
+        } else {
+          return "error"
         }
-    
     })
 
-    sorted_cards = [...filtedCards]
+    return sorted_cards = [...filtedCards]
   }
  
   return(
