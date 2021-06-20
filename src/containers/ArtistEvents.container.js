@@ -20,6 +20,7 @@ function ArtistEvents() {
 			<h3>This is your OZ Live-re-Wire</h3>
 			<Searcher filterStatus={filterStatus}/>
 			<ArtistEventsList apiStatus={apiStatus} filterStatus={filterStatus} query={query}/>
+
 		</div>
 		);
 }

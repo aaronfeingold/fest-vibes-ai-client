@@ -4,6 +4,7 @@ import { nanoid } from "@reduxjs/toolkit"
 import ArtistEvent from "../cards/ArtistEvent.card"
 import ErrorMessage from '../errors/ErrorMessage';
 
+
 const ArtistEventsList = ({apiStatus, apiErrorMessage, query, filterStatus}) => {
   let ae_objs = useSelector(state => state.aes.artist_events)
 
