@@ -26,11 +26,7 @@ const artistEventsSlice = createSlice({
         state.status = 'failed'
         state.error = errors
       } else {
-<<<<<<< HEAD
-        state.artist_events = aes.data
-=======
         return { ...state, artist_events: aes}
->>>>>>> refactor
       }
     },
     [fetchArtistEvents.rejected]: (state, action) => {
