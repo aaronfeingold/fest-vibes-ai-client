@@ -18,12 +18,9 @@ function ArtistEvents() {
   return(
 		<div className="container-fluid">
 			<h3>This is your OZ Live-re-Wire</h3>
-<<<<<<< HEAD
-			<ArtistEventsList apiStatus={apiStatus}/>
-=======
 			<Searcher filterStatus={filterStatus}/>
 			<ArtistEventsList apiStatus={apiStatus} filterStatus={filterStatus} query={query}/>
->>>>>>> refactor
+
 		</div>
 		);
 }
