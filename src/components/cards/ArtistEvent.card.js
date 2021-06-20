@@ -12,14 +12,14 @@ const ArtistEvent = ({ae}) => {
   }
 
   return(
-    <div className="artist-event-card" id={artist_name} style={{ width: '18rem' }}>
+    <div className="card" id={artist_name} style={{ width: '18rem' }}>
       <div className="card-body">
-        <ul className="card-title">
-          <li className="card-title artist-name">
+        <ul className="card-info">
+          <li className="card-info artist-name">
             {artist_name}
           </li>
-          <li className="card-title event-href">
-            <button className = "btn btn-primary"onClick={()=> window.open(`https://www.wwoz.org${event_href}`, "_blank")}>Details Here</button>
+          <li className="card-info event-href">
+            <button className="btn btn-primary"onClick={()=> window.open(`https://www.wwoz.org${event_href}`, "_blank")}>Details Here</button>
           </li>
         </ul>
       </div>
