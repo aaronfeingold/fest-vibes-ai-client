@@ -4,6 +4,7 @@ import { nanoid } from "@reduxjs/toolkit"
 import ArtistEvent from "../cards/ArtistEvent.card"
 import ErrorMessage from '../errors/ErrorMessage';
 
+
 const ArtistEventsList = ({apiStatus, apiErrorMessage, query, filterStatus}) => {
   let ae_objs = useSelector(state => state.aes.artist_events)
 
@@ -13,14 +14,14 @@ const ArtistEventsList = ({apiStatus, apiErrorMessage, query, filterStatus}) => 
 
   if (filterStatus === true) {
     let findAlike = query.toLowerCase()
-    let filteredCards = cards.filter((card) => {
+    let filteredCards = cards.filter(card => {
       let ae = card.props.ae
       let artist_name = Object.keys(ae)[0]
-      return artist_name.includes(findAlike)
+      (artist_name.includes(findAlike))
     })
     return sorted_cards = filteredCards
   }
- 
+
   return(
     <>
       {apiStatus === 'loading' ? (
