@@ -10,18 +10,20 @@ const ArtistEventsList = ({apiStatus, apiErrorMessage, query, filterStatus}) => 
 
   let cards = ae_objs.map(ae => <ArtistEvent key={nanoid()} ae={ae}/>)
 
-  let sorted_cards = cards.sort((a,b)=> (Object.keys(a.props.ae) > Object.keys(b.props.ae)) ? 1 : -1)
+  let sortedCards = cards.sort((a,b)=> (Object.keys(a.props.ae) > Object.keys(b.props.ae)) ? 1 : -1)
+
+  let filteredCards
 
   if (filterStatus === true) {
     let findAlike = query.toLowerCase()
-    let filteredCards = cards.filter((card) => {
+    filteredCards = sortedCards.filter(card => {
       let ae = card.props.ae
-      let artist_name = Object.keys(ae)[0]
+      let artist_name = Object.keys(ae)[0].toLocaleLowerCase()
       return artist_name.includes(findAlike)
     })
-    return sorted_cards = filteredCards
+    return filteredCards
   }
- 
+
   return(
     <>
       {apiStatus === 'loading' ? (
@@ -30,7 +32,7 @@ const ArtistEventsList = ({apiStatus, apiErrorMessage, query, filterStatus}) => 
           <ErrorMessage error={apiErrorMessage} />
       ):(
         <>
-        {sorted_cards}
+        {(!!filteredCards)? filteredCards : sortedCards}
         </>
       )}
     </>
