@@ -26,15 +26,15 @@ const ArtistEventsList = ({apiStatus, apiErrorMessage, query, filterStatus}) => 
 
   return(
     <>
-      {apiStatus === 'loading' ? (
-        <div> Loading </div>
-      ):apiStatus === 'failed' ? (
+      {apiStatus === 'failed' && (
           <ErrorMessage error={apiErrorMessage} />
-      ):(
-        <>
-        {(!!filteredCards)? filteredCards : sortedCards}
-        </>
       )}
+      {apiStatus === 'loading' &&  (
+        <div className="spinner-border" role="status">
+          <span className="sr-only">WWOZ</span>
+        </div>
+      )}
+      {(!!filteredCards)? filteredCards : sortedCards}
     </>
   )
 }

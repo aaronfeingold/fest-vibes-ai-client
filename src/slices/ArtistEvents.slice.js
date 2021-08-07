@@ -3,7 +3,7 @@ import { fetchArtistEvents } from '../services/ArtistEvents.service'
 
 // set initial state of slice of store
 export const initialState = {
-  apiStatus: 'idle',
+  apiStatus: 'loading',
   filterStatus: null,
   query: "",
   error: null,
@@ -23,14 +23,14 @@ const artistEventsSlice = createSlice({
       const aes = action.payload;
       const errors = (aes["errors"]) ? aes["errors"] : null;
       if (!!errors){
-        state.status = 'failed'
+        state.apiStatus = 'failed'
         state.error = errors
       } else {
-        return { ...state, artist_events: aes}
+        return { ...state, artist_events: aes, apiStatus: 'idle'}
       }
     },
     [fetchArtistEvents.rejected]: (state, action) => {
-      state.status = 'failed'
+      state.apiStatus = 'failed'
       return { ...state, error: action.error}
   },
 }

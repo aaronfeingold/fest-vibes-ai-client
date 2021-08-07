@@ -1,8 +1,8 @@
 import React from 'react'
 
 const ArtistEvent = ({ae}) => {
-  let artist_name 
-  let event_href 
+  let artist_name;
+  let event_href;
 
   for (var key in ae) {
     if (ae.hasOwnProperty(key)){
