@@ -5,7 +5,7 @@ import { setFilterStatus, updateQuery } from '../../slices/ArtistEvents.slice'
 const Searcher = () => {
   let dispatch = useDispatch()
 
-  let handleQuery = (e) => {
+  let handleQuery = (e: { target: { value: string } }) => {
     let query = e.target.value
     if (query !== ""){
       dispatch(setFilterStatus(true))
