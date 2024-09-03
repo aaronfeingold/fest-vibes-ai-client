@@ -1,36 +1,26 @@
-import React from 'react'
+import React from "react";
+import { nanoid } from "@reduxjs/toolkit";
+import styles from "./ArtistEvent.card.module.css";
 
 const ArtistEvent = ({ ae }) => {
-  let artistName;
-  let eventHref;
-
-  for (let key in ae) {
-    if (ae.hasOwnProperty(key)) {
-      eventHref = ae[key];
-      artistName = key;
-    }
-  }
+  const [artistName, eventHref] = Object.entries(ae)[0];
 
   return (
-    <div className="row justify-content-center">
-      <div className="card" id={artistName} style={{ width: "30rem" }}>
-        <div className="card-body">
-          <ul className="card-info">
-            <li className="card-info artist-name">{artistName}</li>
-            <li className="card-info event-href">
-              <button
-                className="btn btn-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() =>
-                  window.open(`https://www.wwoz.org${eventHref}`, "_blank")
-                }
-              >
-                Details Here
-              </button>
-            </li>
-          </ul>
-        </div>
+    <div
+      className={`card mb-4 ${styles.card}`}
+      id={`${artistName}-${nanoid()}`}
+      style={{ width: "100%", maxWidth: "20rem" }}
+    >
+      <div className="card-body text-center">
+        <h5 className={`card-title ${styles.cardTitle}`}>{artistName}</h5>
+        <button
+          className={`btn btn-primary mt-2 ${styles.btnPrimary}`}
+          onClick={() =>
+            window.open(`https://www.wwoz.org${eventHref}`, "_blank")
+          }
+        >
+          Details Here
+        </button>
       </div>
     </div>
   );
