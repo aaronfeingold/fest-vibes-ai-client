@@ -12,28 +12,29 @@ export const initialState = {
 
 // a slice of root reducer
 const artistEventsSlice = createSlice({
-  name: 'aes',
+  name: "aes",
   initialState,
   reducers: {
-    setFilterStatus(state, action) {state.filterStatus = action.payload},
-    updateQuery(state, action) {state.query = action.payload}
-  },
-  extraReducers: {
-    [fetchArtistEvents.fulfilled]: (state, action) => {
-      const aes = action.payload;
-      const errors = (aes["errors"]) ? aes["errors"] : null;
-      if (!!errors){
-        state.apiStatus = 'failed'
-        state.error = errors
-      } else {
-        return { ...state, artist_events: aes, apiStatus: 'idle'}
-      }
+    setFilterStatus(state, action) {
+      state.filterStatus = action.payload;
     },
-    [fetchArtistEvents.rejected]: (state, action) => {
-      state.apiStatus = 'failed'
-      return { ...state, error: action.error}
+    updateQuery(state, action) {
+      state.query = action.payload;
+    },
   },
-}
+  extraReducers: (builder) => {
+    builder.addCase(fetchArtistEvents.pending, (state, action) => {
+      state.apiStatus = "loading";
+    });
+    builder.addCase(fetchArtistEvents.fulfilled, (state, action) => {
+      state.apiStatus = "succeeded";
+      state.artist_events = action.payload;
+    });
+    builder.addCase(fetchArtistEvents.rejected, (state, action) => {
+      state.apiStatus = "failed";
+      state.error = action.error.message;
+    });
+  },
 });
 
 export const { setFilterStatus, updateQuery } = artistEventsSlice.actions
