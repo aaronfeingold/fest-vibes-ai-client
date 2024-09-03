@@ -1,12 +1,12 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import ArtistEventsContainer from './containers/ArtistEvents.container'
+import Home from "./containers/Home.container";
 
 const App = () => (
   <Router>
     <Routes>
-      <Route path="/" element={<ArtistEventsContainer />} />
+      <Route path="/" element={<Home />} />
     </Routes>
   </Router>
 );
