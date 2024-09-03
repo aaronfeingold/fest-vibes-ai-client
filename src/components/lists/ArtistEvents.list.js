@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { nanoid } from "@reduxjs/toolkit";
 import ArtistEvent from "../cards/ArtistEvent.card";
-import ErrorMessage from '../errors/ErrorMessage';
+import DefaultErrorMessage from "../errors/DefaultErrorMessage.error";
 
 
 const ArtistEventsList = ({apiStatus, apiErrorMessage, query, filterStatus}) => {
@@ -25,12 +25,12 @@ const ArtistEventsList = ({apiStatus, apiErrorMessage, query, filterStatus}) => 
     return filteredCards
   };
 
-  return(
+  return (
     <div className="container-sm">
-      {apiStatus === 'failed' && (
-          <ErrorMessage error={apiErrorMessage} />
+      {apiStatus === "failed" && (
+        <DefaultErrorMessage error={apiErrorMessage} />
       )}
-      {(!!filteredCards)? filteredCards : sortedCards}
+      {!!filteredCards ? filteredCards : sortedCards}
     </div>
   );
 };
