@@ -1,12 +1,14 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ArtistEventsContainer from './containers/ArtistEvents.container'
 
-const App = () =>(
+const App = () => (
   <Router>
-    <Route path="/" component={ArtistEventsContainer} />
+    <Routes>
+      <Route path="/" element={<ArtistEventsContainer />} />
+    </Routes>
   </Router>
-)
+);
 
 export default App;
