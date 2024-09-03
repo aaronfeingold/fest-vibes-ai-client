@@ -3,18 +3,18 @@ import { useDispatch } from 'react-redux'
 import { setFilterStatus, updateQuery } from '../../slices/ArtistEvents.slice'
 
 const Searcher = () => {
-  let dispatch = useDispatch()
+  let dispatch = useDispatch();
 
   let handleQuery = (e: { target: { value: string } }) => {
     let query = e.target.value
     if (query !== ""){
-      dispatch(setFilterStatus(true))
-      dispatch(updateQuery(e.target.value))
+      dispatch(setFilterStatus(true));
+      dispatch(updateQuery(e.target.value));
     } else {
-      dispatch(setFilterStatus(false))
-      dispatch(updateQuery(""))
+      dispatch(setFilterStatus(false));
+      dispatch(updateQuery(""));
     }
-  }
+  };
 
   return (
     <div className="container-sm">
@@ -28,7 +28,7 @@ const Searcher = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Searcher
+export default Searcher;
