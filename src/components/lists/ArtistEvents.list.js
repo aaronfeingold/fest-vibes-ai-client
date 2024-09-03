@@ -1,28 +1,48 @@
-import React, { useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useMemo, useState } from "react";
+import { useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import ArtistEvent from "../cards/ArtistEvent.card";
 import DefaultErrorMessage from "../errors/DefaultErrorMessage.error";
+import styles from "./ArtistEvents.list.module.css";
 
+const ArtistEventsList = ({
+  apiStatus,
+  apiErrorMessage,
+  query,
+  filterStatus,
+}) => {
+  let artistEventsData = useSelector((state) => state.aes);
+  let aeObjs = useMemo(
+    () => artistEventsData?.artist_events,
+    [artistEventsData.artist_events]
+  );
 
-const ArtistEventsList = ({apiStatus, apiErrorMessage, query, filterStatus}) => {
-  let artistEventsData = useSelector(state => state.aes);
-  let ae_objs = useMemo(()=>artistEventsData?.artist_events, [artistEventsData.artist_events]);
+  let cards = aeObjs.map((ae) => <ArtistEvent key={nanoid()} ae={ae} />);
 
-  let cards = ae_objs.map(ae => <ArtistEvent key={nanoid()} ae={ae}/>);
+  let sortedCards = cards.sort((a, b) =>
+    Object.keys(a.props.ae) > Object.keys(b.props.ae) ? 1 : -1
+  );
 
-  let sortedCards = cards.sort((a,b)=> (Object.keys(a.props.ae) > Object.keys(b.props.ae)) ? 1 : -1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6; // Number of cards per page
+  const totalPages = Math.ceil(sortedCards.length / itemsPerPage);
 
-  let filteredCards;
+  // Filter logic
+  const filteredCards = filterStatus
+    ? sortedCards.filter((card) => {
+        const ae = card.props.ae;
+        const artistName = Object.keys(ae)[0].toLowerCase();
+        return artistName.includes(query.toLowerCase());
+      })
+    : sortedCards;
 
-  if (filterStatus === true) {
-    let findAlike = query.toLowerCase()
-    filteredCards = sortedCards.filter(card => {
-      let ae = card.props.ae
-      let artist_name = Object.keys(ae)[0].toLocaleLowerCase()
-      return artist_name.includes(findAlike)
-    })
-    return filteredCards
+  // Pagination logic
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedCards = filteredCards.slice(startIndex, endIndex);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
 
   return (
@@ -30,9 +50,23 @@ const ArtistEventsList = ({apiStatus, apiErrorMessage, query, filterStatus}) => 
       {apiStatus === "failed" && (
         <DefaultErrorMessage error={apiErrorMessage} />
       )}
-      {!!filteredCards ? filteredCards : sortedCards}
+      <div className={`d-flex flex-wrap justify-content-center ${styles.grid}`}>
+        {paginatedCards}
+      </div>
+      <div className="d-flex justify-content-center mt-4">
+        {Array.from({ length: totalPages }, (_, i) => (
+          <button
+            key={i}
+            className={`btn btn-outline-primary mx-1 ${styles.pageButton}`}
+            onClick={() => handlePageChange(i + 1)}
+            disabled={currentPage === i + 1}
+          >
+            {i + 1}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default ArtistEventsList
+export default ArtistEventsList;
