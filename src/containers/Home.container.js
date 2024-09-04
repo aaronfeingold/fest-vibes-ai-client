@@ -1,14 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { fetchArtistEvents } from "../services/ArtistEvents.service";
-import ArtistEvents from "../containers/ArtistEvents.container";
-import Spinner from "../components/Spinner.component";
-import Header from "../components/Header.component";
+import ArtistEvents from "./ArtistEvents.container";
+import HeroSection from "./HeroSection.container";
 import Navbar from "../components/Navbar.component";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { filterStatus, query, apiStatus } = useSelector(
+  const { filterStatus, query } = useSelector(
     (state) => state.aes,
     shallowEqual
   );
@@ -48,16 +47,12 @@ const Home = () => {
       ref={scrollContainerRef}
     >
       <Navbar filterStatus={filterStatus} />
-      <Header />
-      {apiStatus === "loading" ? (
-        <Spinner />
-      ) : (
-        <ArtistEvents
-          filterStatus={filterStatus}
-          query={query}
-          apiStatus={query}
-        />
-      )}
+      <HeroSection />
+      <ArtistEvents
+        filterStatus={filterStatus}
+        query={query}
+        apiStatus={query}
+      />
     </div>
   );
 };
