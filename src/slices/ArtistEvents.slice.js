@@ -3,11 +3,11 @@ import { fetchArtistEvents } from '../services/ArtistEvents.service'
 
 // set initial state of slice of store
 export const initialState = {
-  apiStatus: 'loading',
+  apiStatus: "loading",
   filterStatus: null,
   query: "",
   error: null,
-  artist_events: [],
+  artistEvents: [],
 };
 
 // a slice of root reducer
@@ -23,12 +23,12 @@ const artistEventsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchArtistEvents.pending, (state, action) => {
+    builder.addCase(fetchArtistEvents.pending, (state) => {
       state.apiStatus = "loading";
     });
     builder.addCase(fetchArtistEvents.fulfilled, (state, action) => {
       state.apiStatus = "succeeded";
-      state.artist_events = action.payload;
+      state.artistEvents = action.payload;
     });
     builder.addCase(fetchArtistEvents.rejected, (state, action) => {
       state.apiStatus = "failed";
