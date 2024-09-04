@@ -4,6 +4,7 @@ import { fetchArtistEvents } from "../services/ArtistEvents.service";
 import ArtistEvents from "./ArtistEvents.container";
 import HeroSection from "./HeroSection.container";
 import Navbar from "../components/Navbar.component";
+import styles from "./Home.container.module.css";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -12,24 +13,10 @@ const Home = () => {
     shallowEqual
   );
   const scrollContainerRef = useRef(null);
-  const [showNavbar, setShowNavbar] = useState(false);
 
   useEffect(() => {
     dispatch(fetchArtistEvents());
   }, [dispatch]);
-
-  useEffect(() => {
-    const onScroll = () => {
-      if (window.scrollY > window.innerHeight) {
-        setShowNavbar(true);
-      } else {
-        setShowNavbar(false);
-      }
-    };
-
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const handleScroll = (event) => {
     if (scrollContainerRef.current) {
@@ -46,7 +33,9 @@ const Home = () => {
       onWheel={handleScroll}
       ref={scrollContainerRef}
     >
-      <Navbar filterStatus={filterStatus} />
+      <div className={styles.stickyNavbar}>
+        <Navbar filterStatus={filterStatus} />
+      </div>
       <HeroSection />
       <ArtistEvents
         filterStatus={filterStatus}
