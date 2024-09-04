@@ -13,8 +13,8 @@ const ArtistEventsList = ({
 }) => {
   let artistEventsData = useSelector((state) => state.aes);
   let aeObjs = useMemo(
-    () => artistEventsData?.artist_events,
-    [artistEventsData.artist_events]
+    () => artistEventsData?.artistEvents,
+    [artistEventsData.artistEvents]
   );
 
   let cards = aeObjs.map((ae) => <ArtistEvent key={nanoid()} ae={ae} />);
