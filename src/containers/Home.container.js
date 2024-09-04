@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { fetchArtistEvents } from "../services/ArtistEvents.service";
 import ArtistEvents from "./ArtistEvents.container";
@@ -12,27 +12,13 @@ const Home = () => {
     (state) => state.aes,
     shallowEqual
   );
-  const scrollContainerRef = useRef(null);
 
   useEffect(() => {
     dispatch(fetchArtistEvents());
   }, [dispatch]);
 
-  const handleScroll = (event) => {
-    if (scrollContainerRef.current) {
-      const nextSection = scrollContainerRef.current.nextElementSibling;
-      if (nextSection) {
-        nextSection.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
-
   return (
-    <div
-      className="container-lg"
-      onWheel={handleScroll}
-      ref={scrollContainerRef}
-    >
+    <>
       <div className={styles.stickyNavbar}>
         <Navbar filterStatus={filterStatus} />
       </div>
@@ -42,7 +28,7 @@ const Home = () => {
         query={query}
         apiStatus={query}
       />
-    </div>
+    </>
   );
 };
 
