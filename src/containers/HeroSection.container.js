@@ -8,7 +8,7 @@ const HeroSection = () => {
   return (
     <div className={styles.heroSection}>
       <div className={styles.parallax}>
-        <div className="container text-center text-white">
+        <div className="container text-center text-black">
           <h1 className="display-4 fw-bold">
             <Header />
           </h1>
