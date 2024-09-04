@@ -1,19 +1,20 @@
 import React from "react";
 import { useSelector, shallowEqual } from "react-redux";
+import { Audio } from "react-loader-spinner";
 
 const Spinner = () => {
   const { apiStatus } = useSelector((state) => state.aes, shallowEqual);
   if (apiStatus === "loading") {
     return (
-      <div className="text-center">
-        <div
-          className="spinner-border"
-          role="status"
-          style={{ marginTop: 50, marginBottom: 50 }}
-        >
-          <span className="sr-only"></span>
-        </div>
-      </div>
+      <Audio
+        height="100"
+        width="100"
+        color="#4fa94d"
+        ariaLabel="audio-loading"
+        wrapperStyle={{}}
+        wrapperClass="wrapper-class"
+        visible={true}
+      />
     );
   }
 };
