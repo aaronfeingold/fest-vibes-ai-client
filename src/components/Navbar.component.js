@@ -1,9 +1,12 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Searcher from "./cards/Searcher.card";
+import styles from "./Navbar.component.module.css";
 
 const Navbar = ({ filterStatus }) => (
-  <nav className="navbar navbar-expand-lg navbar-light bg-light">
+  <nav
+    className={`navbar navbar-expand-lg navbar-light bg-light ${styles.navbar}`}
+  >
     <div className="container-fluid">
       <a className="navbar-brand" href="#Home">
         AJF Live-re-Wire
