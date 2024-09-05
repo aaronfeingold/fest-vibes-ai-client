@@ -8,7 +8,7 @@ const Navbar = ({ filterStatus }) => (
     className={`navbar navbar-expand-lg navbar-light bg-light ${styles.stickyNavbar}`}
   >
     <div className="container-fluid">
-      <a className="navbar-brand" href="#Home">
+      <a className="navbar-brand" href="#home">
         AJF Live-re-Wire
       </a>
       <button
