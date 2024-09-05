@@ -4,7 +4,6 @@ import { fetchArtistEvents } from "../services/ArtistEvents.service";
 import ArtistEvents from "./ArtistEvents.container";
 import HeroSection from "./HeroSection.container";
 import Navbar from "../components/Navbar.component";
-import styles from "./Home.container.module.css";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -19,9 +18,7 @@ const Home = () => {
 
   return (
     <>
-      <div className={styles.stickyNavbar}>
-        <Navbar filterStatus={filterStatus} />
-      </div>
+      <Navbar filterStatus={filterStatus} />
       <HeroSection />
       <ArtistEvents
         filterStatus={filterStatus}
