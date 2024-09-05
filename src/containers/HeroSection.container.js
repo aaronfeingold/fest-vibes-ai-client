@@ -6,7 +6,7 @@ import styles from "./HeroSection.container.module.css";
 
 const MINIMUM_LOADING_TIME = 3000;
 
-const HeroSection = () => {
+const HeroSection = ({ scrollToEvents }) => {
   const { apiStatus } = useSelector((state) => state.aes, shallowEqual);
   const [spinnerVisible, setSpinnerVisible] = useState(false);
   const [spinnerTimeout, setSpinnerTimeout] = useState(null);
@@ -24,7 +24,28 @@ const HeroSection = () => {
       }, MINIMUM_LOADING_TIME);
       setSpinnerTimeout(timeoutId);
     }
-  }, [apiStatus, spinnerTimeout]);
+  }, [
+    apiStatus,
+    spinnerVisible,
+    spinnerTimeout,
+    setSpinnerVisible,
+    setSpinnerTimeout,
+  ]);
+
+  // Scroll detection
+  useEffect(() => {
+    const handleScroll = (e) => {
+      if (e.deltaY > 0) {
+        console.log("foobar");
+        scrollToEvents(); // Trigger scroll to ArtistEvents when scrolling down
+      }
+    };
+
+    window.addEventListener("wheel", handleScroll);
+    return () => {
+      window.removeEventListener("wheel", handleScroll);
+    };
+  }, [scrollToEvents]);
 
   const header = useMemo(() => {
     return (
