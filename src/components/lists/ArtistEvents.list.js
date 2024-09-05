@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import ArtistEvent from "../cards/ArtistEvent.card";
+import Pagination from "../Pagination.component";
 import DefaultErrorMessage from "../errors/DefaultErrorMessage.error";
 import styles from "./ArtistEvents.list.module.css";
 
@@ -53,18 +54,11 @@ const ArtistEventsList = ({
       <div className={`d-flex flex-wrap justify-content-center ${styles.grid}`}>
         {paginatedCards}
       </div>
-      <div className="d-flex justify-content-center mt-4">
-        {Array.from({ length: totalPages }, (_, i) => (
-          <button
-            key={i}
-            className={`btn btn-outline-primary mx-1 ${styles.pageButton}`}
-            onClick={() => handlePageChange(i + 1)}
-            disabled={currentPage === i + 1}
-          >
-            {i + 1}
-          </button>
-        ))}
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };
