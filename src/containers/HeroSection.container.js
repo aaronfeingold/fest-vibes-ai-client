@@ -3,49 +3,35 @@ import { useSelector, shallowEqual } from "react-redux";
 import Header from "../components/Header.component";
 import Spinner from "../components/Spinner.component";
 import styles from "./HeroSection.container.module.css";
+import useScroll from "../hooks/useScroll";
 
 const MINIMUM_LOADING_TIME = 3000;
 
-const HeroSection = ({ scrollToEvents }) => {
+const HeroSection = () => {
   const { apiStatus } = useSelector((state) => state.aes, shallowEqual);
   const [spinnerVisible, setSpinnerVisible] = useState(false);
-  const [spinnerTimeout, setSpinnerTimeout] = useState(null);
-  // Effect to manage spinner visibility based on API status
+  const { scrollToEvents } = useScroll();
+
   useEffect(() => {
+    let timeoutId;
+
     if (apiStatus === "loading") {
       setSpinnerVisible(true);
-      // Clear any existing timeout
-      if (spinnerTimeout) {
-        clearTimeout(spinnerTimeout);
-      }
-      // Set a new timeout to hide the spinner after the minimum duration
-      const timeoutId = setTimeout(() => {
+      timeoutId = setTimeout(() => {
         setSpinnerVisible(false);
       }, MINIMUM_LOADING_TIME);
-      setSpinnerTimeout(timeoutId);
+    } else {
+      // Hide spinner if not loading
+      setSpinnerVisible(false);
     }
-  }, [
-    apiStatus,
-    spinnerVisible,
-    spinnerTimeout,
-    setSpinnerVisible,
-    setSpinnerTimeout,
-  ]);
 
-  // Scroll detection
-  useEffect(() => {
-    const handleScroll = (e) => {
-      if (e.deltaY > 0) {
-        console.log("foobar");
-        scrollToEvents(); // Trigger scroll to ArtistEvents when scrolling down
+    // Cleanup function to clear the timeout if component unmounts
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
       }
     };
-
-    window.addEventListener("wheel", handleScroll);
-    return () => {
-      window.removeEventListener("wheel", handleScroll);
-    };
-  }, [scrollToEvents]);
+  }, [apiStatus]);
 
   const header = useMemo(() => {
     return (
@@ -55,8 +41,15 @@ const HeroSection = ({ scrollToEvents }) => {
     );
   }, [spinnerVisible]);
 
+  // Handle the mouse wheel event
+  const handleWheel = (event) => {
+    if (event.deltaY > 0) {
+      scrollToEvents(); // Trigger scroll to the ArtistEvents section when the user scrolls down
+    }
+  };
+
   return (
-    <div className={styles.heroSection}>
+    <div className={styles.heroSection} onWheel={handleWheel}>
       <div className={styles.parallax}>
         <div className="container text-center text-black">{header}</div>
       </div>
