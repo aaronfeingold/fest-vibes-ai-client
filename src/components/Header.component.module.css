@@ -1,0 +1,12 @@
+.headerContainer {
+    position: relative;
+  }
+
+.headerText {
+  position: relative;
+  padding: 40px;
+  border-radius: 20px; /* Optional: Rounded corners */
+  font-size: 2.5rem; /* Adjust as needed */
+  font-weight: bold; /* Make text bold for better visibility */
+  background-color: #b8f1e380
+}
