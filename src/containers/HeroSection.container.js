@@ -23,12 +23,6 @@ const HeroSection = () => {
         setSpinnerVisible(false);
       }, MINIMUM_LOADING_TIME);
       setSpinnerTimeout(timeoutId);
-    } else {
-      // If API status is not loading, hide the spinner immediately
-      if (spinnerTimeout) {
-        clearTimeout(spinnerTimeout);
-        setSpinnerVisible(false);
-      }
     }
   }, [apiStatus, spinnerTimeout]);
 
