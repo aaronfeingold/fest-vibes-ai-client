@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setFilterStatus, updateQuery } from "../../slices/ArtistEvents.slice";
 import styles from "./Searcher.card.module.css";
+import useScroll from "../../hooks/useScroll";
 
 const Searcher = () => {
   const dispatch = useDispatch();
+  const { scrollToEvents } = useScroll();
   const [searchTerm, setSearchTerm] = useState(""); // State to manage the search term
   const [debouncedTerm, setDebouncedTerm] = useState(searchTerm);
+  const [hasClicked, setHasClicked] = useState(false);
 
   // Update debounced term after a delay
   useEffect(() => {
@@ -35,6 +38,13 @@ const Searcher = () => {
   const handleQuery = (e) => {
     setSearchTerm(e.target.value);
   };
+  // Handle click on the search input
+  const handleSearchClick = () => {
+    if (!hasClicked) {
+      scrollToEvents(); // Scroll to events when search input is clicked for the first time
+      setHasClicked(true); // Mark that the search input has been clicked
+    }
+  };
 
   return (
     <div className="container-sm">
@@ -49,6 +59,7 @@ const Searcher = () => {
             placeholder="Search by artist name"
             aria-label="Search by artist name"
             onChange={handleQuery}
+            onClick={handleSearchClick}
             value={searchTerm}
           />
           <button
