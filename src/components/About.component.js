@@ -1,7 +1,7 @@
 import React from "react";
 
 const About = () => {
-  return <>Some texts</>;
+  return <>Support Your Local Musicians</>;
 };
 
 export default About;
