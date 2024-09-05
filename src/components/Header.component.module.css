@@ -8,5 +8,6 @@
   border-radius: 20px; /* Optional: Rounded corners */
   font-size: 5rem; /* Adjust as needed */
   font-weight: bold; /* Make text bold for better visibility */
-  font-family: courier
+  font-family: courier;
+  color: white;
 }
