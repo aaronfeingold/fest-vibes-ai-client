@@ -4,7 +4,6 @@ import styles from "./ArtistEvents.container.module.css";
 
 const ArtistEvents = ({ filterStatus, query, apiStatus }) => (
   <div className={`container-lg ${styles.artistEventsContainer}`}>
-    <br />
     <ArtistEventsList
       apiStatus={apiStatus}
       filterStatus={filterStatus}
