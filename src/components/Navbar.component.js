@@ -5,7 +5,7 @@ import styles from "./Navbar.component.module.css";
 
 const Navbar = ({ filterStatus }) => (
   <nav
-    className={`navbar navbar-expand-lg navbar-light bg-light ${styles.navbar}`}
+    className={`navbar navbar-expand-lg navbar-light bg-light ${styles.stickyNavbar}`}
   >
     <div className="container-fluid">
       <a className="navbar-brand" href="#Home">
