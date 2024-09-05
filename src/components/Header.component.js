@@ -1,5 +1,6 @@
 import React from "react";
 import { formatDate, getOrdinalSuffix } from "../utils/formatDate";
+import styles from "./Header.component.module.css";
 
 const Header = () => {
   const today = new Date();
@@ -12,7 +13,7 @@ const Header = () => {
   const [month, dayWithoutSuffix] = monthAndDay.split(" ");
   return (
     <div className="row justify-content-center">
-      <h3 className="text-center">
+      <h3 className={`text-center ${styles.headerText}`}>
         This is your AJF Live-re-Wire Music Calender for{" "}
         {`${month} ${dayWithoutSuffix}${ordinalSuffix},${year}`}
       </h3>
