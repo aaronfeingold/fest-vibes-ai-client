@@ -21,8 +21,13 @@ export const fetchArtistEvents = createAsyncThunk(
         throw error;
       }
     }
-    const response = await axiosAPI.get("/");
-    const payload = response.data;
-    return payload;
+    try {
+      const response = await axiosAPI.get("/");
+      const payload = response.data;
+      return payload;
+    } catch (error) {
+      console.error("Error fetching local data.json:", error);
+      throw error;
+    }
   }
 )
