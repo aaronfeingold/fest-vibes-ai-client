@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setFilterStatus, updateQuery } from "../../slices/ArtistEvents.slice";
 import styles from "./Searcher.card.module.css";
-import useScroll from "../../hooks/useScroll";
 
-const Searcher = () => {
+const Searcher = ({ scrollToEvents }) => {
   const dispatch = useDispatch();
-  const { scrollToEvents } = useScroll();
   const [searchTerm, setSearchTerm] = useState(""); // State to manage the search term
   const [debouncedTerm, setDebouncedTerm] = useState(searchTerm);
   const [hasClicked, setHasClicked] = useState(false);

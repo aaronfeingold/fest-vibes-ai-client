@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Searcher from "./cards/Searcher.card";
 import styles from "./Navbar.component.module.css";
 
-const Navbar = ({ filterStatus }) => (
+const Navbar = ({ filterStatus, scrollToEvents }) => (
   <nav
     className={`navbar navbar-expand-lg navbar-light bg-light ${styles.stickyNavbar}`}
   >
@@ -34,7 +34,10 @@ const Navbar = ({ filterStatus }) => (
             </a>
           </li>
           <li className="nav-item">
-            <Searcher filterStatus={filterStatus} />
+            <Searcher
+              filterStatus={filterStatus}
+              scrollToEvents={scrollToEvents}
+            />
           </li>
         </ul>
       </div>
