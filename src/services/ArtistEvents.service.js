@@ -5,7 +5,10 @@ export const fetchArtistEvents = createAsyncThunk(
   "aes/fetchArtistEvents",
   // get req to AWS API gateway, calls Lambda scrapper python function
   async () => {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.REACT_APP_DEV_ENV === "development") {
+      console.log(
+        `process.env.REACT_APP_DEV_ENV: ${process.env.REACT_APP_DEV_ENV}`
+      );
       try {
         const response = await fetch("/data.json"); // Fetch the local JSON file
         if (!response.ok) {
