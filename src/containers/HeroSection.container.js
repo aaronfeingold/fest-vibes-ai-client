@@ -9,20 +9,21 @@ const MINIMUM_LOADING_TIME = 3000;
 
 const HeroSection = () => {
   const { apiStatus } = useSelector((state) => state.aes, shallowEqual);
-  const [spinnerVisible, setSpinnerVisible] = useState(false);
+  const [spinnerVisible, setSpinnerVisible] = useState(true);
   const { scrollToEvents } = useScroll();
+  const startTime = useMemo(() => Date.now(), []);
 
   useEffect(() => {
     let timeoutId;
 
-    if (apiStatus === "loading") {
-      setSpinnerVisible(true);
+    if (apiStatus === "succeeded") {
+      // Wait for the minimum loading time before hiding the spinner
+      const elapsedTime = Date.now() - startTime;
+      const remainingTime = Math.max(0, MINIMUM_LOADING_TIME - elapsedTime);
+
       timeoutId = setTimeout(() => {
         setSpinnerVisible(false);
-      }, MINIMUM_LOADING_TIME);
-    } else {
-      // Hide spinner if not loading
-      setSpinnerVisible(false);
+      }, remainingTime);
     }
 
     // Cleanup function to clear the timeout if component unmounts
