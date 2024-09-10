@@ -32,10 +32,10 @@ const ArtistEventsList = ({
 
   // Filter logic
   const filteredCards = filterStatus
-    ? sortedCards.filter((card) => {
-        const ae = card.props.ae;
-        const artistName = Object.keys(ae)[0].toLowerCase();
-        return artistName.includes(query.toLowerCase());
+    ? sortedCards.filter(({ props }) => {
+        return Object.keys(props.ae)[0]
+          .toLowerCase()
+          .includes(query.toLowerCase());
       })
     : sortedCards;
 
