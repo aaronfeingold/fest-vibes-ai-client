@@ -44,7 +44,7 @@ const Home = () => {
   }, [apiStatus, startTime]);
 
   return (
-    <>
+    <div id="homeContainer">
       <Navbar filterStatus={filterStatus} scrollToEvents={scrollToEvents} />
       <HeroSection
         spinnerVisible={spinnerVisible}
@@ -56,7 +56,7 @@ const Home = () => {
         query={query}
         apiStatus={query}
       />
-    </>
+    </div>
   );
 };
 

@@ -17,6 +17,8 @@ const ArtistEventsList = ({
     () => artistEventsData?.artistEvents,
     [artistEventsData.artistEvents]
   );
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(6);
 
   let cards = aeObjs.map((ae) => <ArtistEvent key={nanoid()} ae={ae} />);
 
@@ -24,8 +26,6 @@ const ArtistEventsList = ({
     Object.keys(a.props.ae) > Object.keys(b.props.ae) ? 1 : -1
   );
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6; // Number of cards per page
   const totalPages = Math.ceil(sortedCards.length / itemsPerPage);
 
   // Filter logic
@@ -46,8 +46,13 @@ const ArtistEventsList = ({
     setCurrentPage(page);
   };
 
+  const handleItemsPerPageChange = (ipp) => {
+    setItemsPerPage(ipp);
+    setCurrentPage(1);
+  };
+
   return (
-    <div className="container-sm">
+    <div className="container-md">
       {apiStatus === "failed" && (
         <DefaultErrorMessage error={apiErrorMessage} />
       )}
@@ -58,6 +63,7 @@ const ArtistEventsList = ({
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={handlePageChange}
+        onItemsPerPageChange={handleItemsPerPageChange}
       />
     </div>
   );
