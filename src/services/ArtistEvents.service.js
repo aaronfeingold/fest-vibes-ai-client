@@ -26,7 +26,7 @@ export const fetchArtistEvents = createAsyncThunk(
       const payload = response.data;
       return payload;
     } catch (error) {
-      console.error("Error fetching local data.json:", error);
+      console.error("Error fetching from API:", error);
       throw error;
     }
   }
