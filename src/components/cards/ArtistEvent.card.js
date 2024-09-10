@@ -10,7 +10,7 @@ const ArtistEvent = ({ ae }) => {
     } else {
       return `https://www.wwoz.org${eventHref}`;
     }
-  }, [artistName, eventHref]);
+  }, [eventHref]);
 
   return (
     <div
