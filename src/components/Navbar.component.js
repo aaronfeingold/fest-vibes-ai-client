@@ -1,4 +1,5 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Searcher from "./cards/Searcher.card";
 import styles from "./Navbar.component.module.css";
 

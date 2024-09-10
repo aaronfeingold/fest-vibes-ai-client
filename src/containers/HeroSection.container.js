@@ -23,7 +23,7 @@ const HeroSection = ({ spinnerVisible, scrollToEvents }) => {
   return (
     <div id="home" className={styles.heroSection} onWheel={handleWheel}>
       <div className={styles.parallax}>
-        <div className="container-sm text-center text-black">{header}</div>
+        <div className="container text-center text-black">{header}</div>
       </div>
     </div>
   );
