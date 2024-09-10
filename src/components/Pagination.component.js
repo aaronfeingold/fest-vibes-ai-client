@@ -5,6 +5,7 @@ const Pagination = ({
   totalPages,
   onPageChange,
   onItemsPerPageChange,
+  itemCount,
 }) => {
   const getPageNumbers = () => {
     const pages = [];
@@ -105,7 +106,7 @@ const Pagination = ({
             <button
               className="dropdown-item"
               type="button"
-              onClick={() => onItemsPerPageChange(100)}
+              onClick={() => onItemsPerPageChange(itemCount)}
             >
               All
             </button>

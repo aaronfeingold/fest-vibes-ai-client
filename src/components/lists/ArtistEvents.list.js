@@ -26,7 +26,9 @@ const ArtistEventsList = ({
     Object.keys(a.props.ae) > Object.keys(b.props.ae) ? 1 : -1
   );
 
-  const totalPages = Math.ceil(sortedCards.length / itemsPerPage);
+  const cardCount = sortedCards.length;
+
+  const totalPages = Math.ceil(cardCount / itemsPerPage);
 
   // Filter logic
   const filteredCards = filterStatus
@@ -56,15 +58,16 @@ const ArtistEventsList = ({
       {apiStatus === "failed" && (
         <DefaultErrorMessage error={apiErrorMessage} />
       )}
-      <div className={`d-flex flex-wrap justify-content-center ${styles.grid}`}>
-        {paginatedCards}
-      </div>
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
+        itemCount={cardCount}
         onPageChange={handlePageChange}
         onItemsPerPageChange={handleItemsPerPageChange}
       />
+      <div className={`d-flex flex-wrap justify-content-center ${styles.grid}`}>
+        {paginatedCards}
+      </div>
     </div>
   );
 };
