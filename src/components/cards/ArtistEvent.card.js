@@ -4,6 +4,7 @@ import styles from "./ArtistEvent.card.module.css";
 
 const ArtistEvent = ({ ae }) => {
   const [artistName, eventHref] = Object.entries(ae)[0];
+  // TODO: handle this logic on the backend
   const windowLink = useMemo(() => {
     if (eventHref.includes("wwoz.org")) {
       return eventHref;
