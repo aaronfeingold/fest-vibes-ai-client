@@ -67,7 +67,6 @@ const ArtistEvents = () => {
         <ArtistEventsList
           apiStatus={apiStatus}
           filterStatus={filterStatus}
-          query={query}
           paginatedCards={paginatedCards}
         />
       </div>
