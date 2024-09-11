@@ -1,21 +1,17 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { createContext, useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import useScroll from "../hooks/useScroll";
 import { fetchArtistEvents } from "../services/ArtistEvents.service";
 import ArtistEvents from "./ArtistEvents.container";
 import HeroSection from "./HeroSection.container";
-import Navbar from "../components/Navbar.component";
 
 const MINIMUM_LOADING_TIME = 3000;
 
+export const SpinnerContext = createContext();
+
 const Home = () => {
   const dispatch = useDispatch();
-  const { scrollToEvents } = useScroll();
   const [spinnerVisible, setSpinnerVisible] = useState(true);
-  const { apiStatus, filterStatus, query } = useSelector(
-    (state) => state.aes,
-    shallowEqual
-  );
+  const { apiStatus } = useSelector((state) => state.aes, shallowEqual);
   const startTime = useMemo(() => Date.now(), []);
 
   useEffect(() => {
@@ -44,19 +40,12 @@ const Home = () => {
   }, [apiStatus, startTime]);
 
   return (
-    <div id="homeContainer">
-      <Navbar filterStatus={filterStatus} scrollToEvents={scrollToEvents} />
-      <HeroSection
-        spinnerVisible={spinnerVisible}
-        scrollToEvents={scrollToEvents}
-      />
-      <ArtistEvents
-        spinnerVisible={spinnerVisible}
-        filterStatus={filterStatus}
-        query={query}
-        apiStatus={query}
-      />
-    </div>
+    <SpinnerContext.Provider value={{ spinnerVisible, setSpinnerVisible }}>
+      <div id="homeContainer">
+        <HeroSection />
+        <ArtistEvents />
+      </div>
+    </SpinnerContext.Provider>
   );
 };
 
