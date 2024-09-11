@@ -2,7 +2,7 @@ import React from "react";
 import Searcher from "./cards/Searcher.card";
 import styles from "./Navbar.component.module.css";
 
-const Navbar = ({ filterStatus, scrollToEvents }) => (
+const Navbar = () => (
   <nav
     className={`navbar navbar-expand-lg navbar-light bg-light ${styles.stickyNavbar}`}
   >
@@ -33,10 +33,7 @@ const Navbar = ({ filterStatus, scrollToEvents }) => (
             </a>
           </li>
           <li className="nav-item">
-            <Searcher
-              filterStatus={filterStatus}
-              scrollToEvents={scrollToEvents}
-            />
+            <Searcher />
           </li>
         </ul>
       </div>
