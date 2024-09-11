@@ -1,17 +1,22 @@
-import React, { useMemo } from "react";
+import React, { useContext, useMemo } from "react";
 import Header from "../components/Header.component";
 import Spinner from "../components/Spinner.component";
 import styles from "./HeroSection.container.module.css";
+import useScroll from "../hooks/useScroll";
+import { SpinnerContext } from "../containers/Home.container";
 
-const HeroSection = ({ spinnerVisible, scrollToEvents }) => {
+const HeroSection = () => {
+  const { spinnerVisible } = useContext(SpinnerContext);
+  const { scrollToEvents } = useScroll();
   // UX: Hide the spinner after a minimum loading time
-  const header = useMemo(() => {
-    return (
+  const header = useMemo(
+    () => (
       <h1 className="display-4 fw-bold">
         {spinnerVisible ? <Spinner /> : <Header />}
       </h1>
-    );
-  }, [spinnerVisible]);
+    ),
+    [spinnerVisible]
+  );
 
   // UX: Handle the mouse wheel
   const handleWheel = (event) => {
