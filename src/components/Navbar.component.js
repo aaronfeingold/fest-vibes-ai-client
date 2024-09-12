@@ -5,6 +5,12 @@ import useScroll from "../hooks/useScroll";
 
 const Navbar = () => {
   const { scrollToEvents } = useScroll();
+
+  const handleClick = (e) => {
+    e.preventDefault(); // Prevent default anchor link behavior
+    scrollToEvents();
+  };
+
   return (
     <nav
       className={`navbar navbar-expand-lg navbar-light bg-light ${styles.stickyNavbar}`}
@@ -31,7 +37,7 @@ const Navbar = () => {
                 className="nav-link active"
                 aria-current="page"
                 href="#artistEventsContainer"
-                onClick={() => scrollToEvents()}
+                onClick={handleClick}
               >
                 Artist Events
               </a>
