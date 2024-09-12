@@ -1,5 +1,7 @@
 .heroSection {
-    color: black
+    color: black;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .parallax {
@@ -8,15 +10,46 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column; /* Stack elements vertically */
   /* Background image for the parallax effect */
   background-image: url("/public/images/coolBackground1.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: repeat;
   background-size: cover;
+  overflow: hidden;
 }
 
-.container {
+.headerContainer {
   position: relative;
   z-index: 2;
+}
+
+@keyframes twinkleAway {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.spinnerTwinkle {
+  animation: twinkleAway 0.5s ease-in-out forwards;
+}
+
+.headerFadeIn {
+  animation: fadeIn 1s ease-in-out forwards;
+  opacity: 0; /* Initially hidden */
 }
