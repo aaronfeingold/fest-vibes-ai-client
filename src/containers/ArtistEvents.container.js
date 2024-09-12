@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Element } from "react-scroll";
 import { shallowEqual, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import Pagination from "../components/Pagination.component";
@@ -53,23 +54,25 @@ const ArtistEvents = () => {
 
   return (
     !spinnerVisible && (
-      <div
-        id="artistEvents"
-        className={`container-lg ${styles.artistEventsContainer}`}
-      >
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          itemCount={cardCount}
-          onPageChange={handlePageChange}
-          onItemsPerPageChange={handleItemsPerPageChange}
-        />
-        <ArtistEventsList
-          apiStatus={apiStatus}
-          filterStatus={filterStatus}
-          paginatedCards={paginatedCards}
-        />
-      </div>
+      <Element name="artistEventsContainer">
+        <div
+          id="artistEventsContainer"
+          className={`container-lg ${styles.artistEventsContainer}`}
+        >
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            itemCount={cardCount}
+            onPageChange={handlePageChange}
+            onItemsPerPageChange={handleItemsPerPageChange}
+          />
+          <ArtistEventsList
+            apiStatus={apiStatus}
+            filterStatus={filterStatus}
+            paginatedCards={paginatedCards}
+          />
+        </div>
+      </Element>
     )
   );
 };
