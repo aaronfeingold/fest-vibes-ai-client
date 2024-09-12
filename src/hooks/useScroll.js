@@ -1,13 +1,15 @@
-import { animateScroll as scroll } from "react-scroll";
+import { scroller } from "react-scroll";
 import { useCallback } from "react";
 
 // Custom hook for smooth scrolling behavior
 const useScroll = () => {
-  // Scroll to events (or any target position)
+  // Scroll to artist events as a target
   const scrollToEvents = useCallback(() => {
-    scroll.scrollToBottom({
+    scroller.scrollTo("artistEventsContainer", {
       duration: 250,
+      delay: 100,
       smooth: "easeInOutQuad",
+      offset: -99,
     });
   }, []);
 
