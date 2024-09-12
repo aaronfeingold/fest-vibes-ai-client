@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar.component";
 const Layout = ({ children }) => (
   <div>
     <Navbar />
-    <div style={{ paddingTop: "60px" }}>{children}</div>
+    {children}
     {/* todo: create footer */}
   </div>
 );
