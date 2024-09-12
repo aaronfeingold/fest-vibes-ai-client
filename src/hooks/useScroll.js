@@ -7,7 +7,6 @@ const useScroll = () => {
   const scrollToEvents = useCallback(() => {
     scroller.scrollTo("artistEventsContainer", {
       duration: 250,
-      delay: 100,
       smooth: "easeInOutQuad",
       offset: -99,
     });
