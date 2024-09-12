@@ -1,40 +1,80 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { fetchArtistEvents } from '../services/ArtistEvents.service';
+import React, { useContext, useState } from "react";
+import { Element } from "react-scroll";
+import { shallowEqual, useSelector } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
+import Pagination from "../components/Pagination.component";
 import ArtistEventsList from "../components/lists/ArtistEvents.list";
-import Searcher from '../components/cards/Searcher.card';
+import ArtistEvent from "../components/cards/ArtistEvent.card";
+import styles from "./ArtistEvents.container.module.css";
+import { SpinnerContext } from "../containers/Home.container";
 
-function ArtistEvents() {
-  const dispatch = useDispatch();
-	const aesState = useSelector(state => state.aes, shallowEqual);
+const ArtistEvents = () => {
+  const { spinnerVisible } = useContext(SpinnerContext);
+  const { artistEvents, apiStatus, filterStatus, query } = useSelector(
+    (state) => state.aes,
+    shallowEqual
+  );
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(6);
 
-	const { filterStatus, query, apiStatus } = aesState;
+  let cards = artistEvents.map((ae) => <ArtistEvent key={nanoid()} ae={ae} />);
 
-	useEffect(() => {
-		dispatch(fetchArtistEvents())
-	}, [dispatch]);
+  // todo: handle this logic on the backend with a query param
+  // todo: could be refactored
+  let sortedCards = cards.sort((a, b) =>
+    Object.keys(a.props.ae) > Object.keys(b.props.ae) ? 1 : -1
+  );
+  // todo: send artist event count (and/or pages) from backend
+  const cardCount = sortedCards.length;
 
-  return(
-		<div className="container-lg">
-				{apiStatus === 'loading' ?  (
-					<div className="text-center" >
-						<div className="spinner-border" role="status" style={{marginTop: 50, marginBottom: 50}}>
-							<span className="sr-only"></span>
-						</div>
-					</div>
-				) : (
-					<>
-						<div className="row justify-content-center">
-							<h3 className="text-center">This is your OZ Live-re-Wire</h3>
-						</div>
-						<Searcher filterStatus={filterStatus}/>
-						<	br/>
-						<ArtistEventsList apiStatus={apiStatus} filterStatus={filterStatus} query={query}/>
-					</>
-				)}
-			</div>
+  const totalPages = Math.ceil(cardCount / itemsPerPage);
 
-		);
+  // Filter logic
+  const filteredCards = filterStatus
+    ? sortedCards.filter(({ props }) => {
+        return Object.keys(props.ae)[0]
+          .toLowerCase()
+          .includes(query.toLowerCase());
+      })
+    : sortedCards;
+
+  // Pagination logic
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedCards = filteredCards.slice(startIndex, endIndex);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const handleItemsPerPageChange = (ipp) => {
+    setItemsPerPage(ipp);
+    setCurrentPage(1);
+  };
+
+  return (
+    !spinnerVisible && (
+      <Element name="artistEventsContainer">
+        <div
+          id="artistEventsContainer"
+          className={`container-lg ${styles.artistEventsContainer}`}
+        >
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            itemCount={cardCount}
+            onPageChange={handlePageChange}
+            onItemsPerPageChange={handleItemsPerPageChange}
+          />
+          <ArtistEventsList
+            apiStatus={apiStatus}
+            filterStatus={filterStatus}
+            paginatedCards={paginatedCards}
+          />
+        </div>
+      </Element>
+    )
+  );
 };
 
 export default ArtistEvents;
