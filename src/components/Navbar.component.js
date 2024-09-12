@@ -2,6 +2,7 @@ import React from "react";
 import Searcher from "./cards/Searcher.card";
 import styles from "./Navbar.component.module.css";
 import useScroll from "../hooks/useScroll";
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const { scrollToEvents } = useScroll();
@@ -17,7 +18,11 @@ const Navbar = () => {
     >
       <div className="container-fluid">
         <a className="navbar-brand" href="#home">
-          AJF Live-re-Wire
+          <img
+            src={logo}
+            alt="AJF Live-re-Wire Logo"
+            style={{ height: "40px" }}
+          />
         </a>
         <button
           className="navbar-toggler"
