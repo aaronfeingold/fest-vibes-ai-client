@@ -59,8 +59,7 @@ const Pagination = ({
             </button>
           </div>
         </div>
-
-        <div className="col-12 col-sm-auto">
+        <div className={`col-12 col-sm-auto ${styles.paginationDropdown}`}>
           <div className="d-flex justify-content-center">
             <div className="dropdown">
               <button
