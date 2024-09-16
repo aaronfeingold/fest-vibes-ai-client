@@ -29,91 +29,59 @@ const Pagination = ({
   };
 
   return (
-    <div className={`container-sm ${styles.paginationComponent}`}>
-      <div className="d-flex justify-content-center m-4">
-        <button
-          className={`btn btn-outline-primary mx-1`}
-          onClick={() => onPageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          Previous
-        </button>
-
-        {getPageNumbers().map((page, index) => (
+    <div className={`container-fluid ${styles.paginationComponent}`}>
+      <div className="d-flex flex-wrap justify-content-center align-items-center m-2">
+        <div className="d-flex flex-wrap justify-content-center align-items-center mb-2">
           <button
-            key={index}
-            className={"btn btn-outline-primary mx-1"}
-            onClick={() => typeof page === "number" && onPageChange(page)}
-            disabled={currentPage === page || page === "..."}
+            className={`btn btn-outline-primary mx-1 ${styles.paginationButton}`}
+            onClick={() => onPageChange(currentPage - 1)}
+            disabled={currentPage === 1}
           >
-            {page}
+            Previous
           </button>
-        ))}
 
-        <button
-          className="btn btn-outline-primary mx-1"
-          onClick={() => onPageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
-          Next
-        </button>
-        <div className="dropdown">
+          {getPageNumbers().map((page, index) => (
+            <button
+              key={index}
+              className={`btn btn-outline-primary mx-1 ${styles.paginationButton}`}
+              onClick={() => typeof page === "number" && onPageChange(page)}
+              disabled={currentPage === page || page === "..."}
+            >
+              {page}
+            </button>
+          ))}
+
           <button
-            className="btn btn-secondary dropdown-toggle"
-            type="button"
-            id="dropdownMenuButton"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
+            className={`btn btn-outline-primary mx-1 ${styles.paginationButton}`}
+            onClick={() => onPageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
           >
-            Per Page
+            Next
           </button>
-          <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li>
-              <button
-                className="dropdown-item"
-                type="button"
-                onClick={() => onItemsPerPageChange(6)}
-              >
-                6
-              </button>
-            </li>
-            <li>
-              <button
-                className="dropdown-item"
-                type="button"
-                onClick={() => onItemsPerPageChange(10)}
-              >
-                10
-              </button>
-            </li>
-            <li>
-              <button
-                className="dropdown-item"
-                type="button"
-                onClick={() => onItemsPerPageChange(20)}
-              >
-                20
-              </button>
-            </li>
-            <li>
-              <button
-                className="dropdown-item"
-                type="button"
-                onClick={() => onItemsPerPageChange(50)}
-              >
-                50
-              </button>
-            </li>
-            <li>
-              <button
-                className="dropdown-item"
-                type="button"
-                onClick={() => onItemsPerPageChange(itemCount)}
-              >
-                All
-              </button>
-            </li>
-          </ul>
+          <div className="dropdown ms-2">
+            <button
+              className="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Per Page
+            </button>
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              {[6, 10, 20, 50, itemCount].map((num) => (
+                <li key={num}>
+                  <button
+                    className="dropdown-item"
+                    type="button"
+                    onClick={() => onItemsPerPageChange(num)}
+                  >
+                    {num === itemCount ? "All" : num}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
