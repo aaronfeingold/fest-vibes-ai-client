@@ -47,7 +47,7 @@ const Navbar = () => {
                 Artist Events
               </a>
             </li>
-            <li className="nav-item">
+            <li className={`nav-item ${styles.searchContainer}`}>
               <Searcher />
             </li>
           </ul>
