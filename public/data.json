@@ -1,128 +1,94 @@
 [
+  { "David Doucet": "/events/1105146" },
+  { "Dominick Grillo": "/events/1103936" },
+  { "Dr. Sick & The Late Greats": "/events/1104071" },
+  { "Marigny & The Vital Signs": "/events/1103361" },
+  { "The New Orleans Johnnys": "/events/1103366" },
+  { "Deltaphonic": "/events/1103371" },
+  { "Pontchartrain Shakers": "/events/1101711" },
+  { "David L. Harris presents The Rain Sessions": "/events/1098336" },
+  { "Mason Howard": "/events/1094891" },
+  { "The New Orleans Rug Cutters": "/events/1096856" },
+  { "Felipe Antonio Quinteto": "/events/1096876" },
+  { "Les Getrex & Creole Cooking": "/events/1096901" },
+  { "Bettis + The 3rd Degree": "/events/1096916" },
+  { "Poolside DJ set with Lil Jodeci": "/events/1104726" },
+  { "Jazz Ensemble lead by Steve Lands": "/events/1104741" },
+  { "Afterparty with DJ Santero": "/events/1104746" },
   {
-    "WWOZ Groove Gala": "https://www.wwoz.org/events/906496"
+    "Oh Yeah! ft. Peter Harris, Wes \"Warmdaddy\" Anderson, Ed Perkins & More!": "/events/1100451"
   },
+  { "Greazy Alice + Not Exotic": "/events/1098521" },
+  { "The Caesar Brothers' Funk Box": "/events/1098681" },
+  { "Kermit Ruffins & the BBQ Swingers": "/events/1098726" },
+  { "Coyote Anderson": "/events/1095906" },
+  { "Ellen Smith & April Spain": "/events/1103586" },
+  { "Mem Shannon Trio": "/events/1103606" },
+  { "John Fohl & Dean Zucchero": "/events/1104936" },
+  { "HG Breland": "/events/1105141" },
+  { "Ragtime Piano with Adam Rogers": "/events/1095376" },
+  { "Zen Cowboys with Jamie Bernstein & Dave Easley": "/events/1095381" },
+  { "Young Pinstripe Brass Band": "/events/1097876" },
+  { "Jamey St Pierre & The Honeycreepers Radio": "/events/1103091" },
+  { "Higher Heights": "/events/1103116" },
   {
-    "WWOZ Groove Gala": "https://www.wwoz.org/events/906496"
+    "Loyola Alumni Night: Dana Ives + Kota Dosa + Rocky Leonard": "/events/1101696"
   },
+  { "Little Freddie King": "/events/1104516" },
+  { "Jeremy Davenport": "/events/1095611" },
+  { "Vivaz!": "/events/1098111" },
+  { "Julio & Cesar": "/events/1105276" },
+  { "Richard \"Piano\" Scott": "/events/1099411" },
+  { "Sam Friend Jazz Band": "/events/1099451" },
+  { "Sazerac Jazz Band": "/events/1099471" },
+  { "Fritzel's All Star Band with Kevin Ray Clark": "/events/1099491" },
+  { "Gennifer Flowers": "/events/1098211" },
+  { "Vanessa Carr-Kennedy": "/events/1098791" },
+  { "Rik Slave’s DarkLounge Ministries": "/events/1100056" },
+  { "DJ Pasta": "/events/1100076" },
+  { "Yung Bleu": "/events/1103221" },
+  { "TRTL & Smurph, The General, B.A.L.L. Team & More!": "/events/1102566" },
+  { "David Suarez + Zach Smallman + ET Deaux": "/events/1102546" },
+  { "Trixie Minx's Burlesque Ballroom ft. Romy Kaye": "/events/1094476" },
+  { "Trixie Minx's Burlesque Ballroom ft. Romy Kaye": "/events/1094501" },
+  { "Hash Cabbage": "/events/1094686" },
+  { "Leroy Jones & Paul Longstreth": "/events/1099731" },
+  { "Mahogany Jazz Hall All Stars ft. Mike Fulton": "/events/1099846" },
+  { "Swingin with John Saavedra": "/events/1096121" },
+  { "Shotgun Jazz Band": "/events/1096101" },
+  { "Caitie B. & The Hand Me Downs": "/events/1096306" },
+  { "The Leroy Marshall Band": "/events/1105196" },
+  { "Blues Night with The Johnny Mastro Blues Trio": "/events/1103826" },
   {
-    "Dr. Sick": "/events/1103891"
+    "Mike Dillon's Birthday Celebration with Mike Dillon & The New F* Yeahs": "/events/1101031"
   },
+  { "Funk Monkey ft. Arséne DeLay": "/events/1101036" },
+  { "Jacky Blaire & The Hot Biscuits": "/events/1104111" },
+  { "The Rouge Krewe": "/events/1102916" },
+  { "International Dance Festival New Orleans": "/events/1105246" },
+  { "Steve Masakowski Duo": "/events/1101961" },
+  { "Wolfe Johns Blues Band": "/events/1097921" },
+  { "Spoonfed Jr + Heather Littlefield + Rico Del Oro": "/events/1092111" },
+  { "Fist Full of Flannel": "/events/1104881" },
+  { "Or Shovaly Plus": "/events/1099916" },
+  { "Dottie Yisrael & Friends - Music Open Mic": "/events/1098366" },
+  { "Brats Night Out with SNAXX": "/events/1102466" },
+  { "Stephen Walker N'em": "/events/1102361" },
+  { "Big Easy Brawlers": "/events/1102386" },
+  { "T Marie & Bayou Juju + Jeffrey Broussard": "/events/1092016" },
+  { "B.A.G., Doctors, Beat up, and Poster Child": "/events/1097306" },
   {
-    "Wine Down Wednesday with The Steve Lands Quartet": "/events/1101536"
+    "The Living Room: A Songwriter Showcase ft. Paul Faith & More!": "/events/1097826"
   },
-  {
-    "The Big Soul Band": "/events/1101586"
-  },
-  {
-    "Jesse Morrow": "/events/1100811"
-  },
-  {
-    "b\"\\n        J.J. &amp; The A-OKs      \"": "/events/1097251"
-  },
-  {
-    "Boardwalker &amp; The 3 Finger Swingers": "/events/1097216"
-  },
-  {
-    "The Queen &amp; Friendz": "/events/1097256"
-  },
-  {
-    "Firm Roots ft. Peter Harris, Derek Douget, Dwight Fitch Jr. &amp; More!": "/events/1100421"
-  },
-  {
-    "New Breed Brass Band": "/events/1098601"
-  },
-  {
-    "Sam Forshey Band": "/events/1103531"
-  },
-  {
-    "Jelly Biscuit": "/events/1095361"
-  },
-  {
-    "Audrey LeCrone &amp; Joe Cea": "/events/1103876"
-  },
-  {
-    "Double Whisky": "/events/1073986"
-  },
-  {
-    "Chase N\\xe2\\x80\\x99 Sasquatch": "/events/1104141"
-  },
-  {
-    "Brian Quezergue &amp; Friends": "/events/1103801"
-  },
-  {
-    "Tin Men": "/events/1102151"
-  },
-  {
-    "Lagniappe Brass Band": "/events/1102156"
-  },
-  {
-    "Jeremy Davenport": "/events/1095661"
-  },
-  {
-    "Joe Krown": "/events/1098051"
-  },
-  {
-    "Richard \"Piano\" Scott": "/events/1099261"
-  },
-  {
-    "Bourbon Street Stars": "/events/1099296"
-  },
-  {
-    "b\"\\n        Fritzels All Star Band with Kevin Ray Clark      \"": "/events/1099301"
-  },
-  {
-    "Very Cherry": "/events/1100121"
-  },
-  {
-    "b\"\\n        Funkin It Up with Big Sam      \"": "/events/1094421"
-  },
-  {
-    "Paul Longstreth": "/events/1099766"
-  },
-  {
-    "Mahogany Hall Jazz Band ft. Tom Fischer": "/events/1099771"
-  },
-  {
-    "\"Happy Organ Hour\" presented By Joe Ashlar with Stanton Moore &amp; Danny Abel": "/events/1100956"
-  },
-  {
-    "Lynn Drury": "/events/1094806"
-  },
-  {
-    "Saskia Walker Quartet with Izzy Chase, Belinda Moody, Chloe White": "/events/1101906"
-  },
-  {
-    "The Matt Lemmler Trio": "/events/1066406"
-  },
-  {
-    "BAM JAM with Gene Black": "/events/1102326"
-  },
-  {
-    "Uptown Jazz Orchestra": "/events/1098891"
-  },
-  {
-    "Uptown Jazz Orchestra": "/events/1098896"
-  },
-  {
-    "Chris Chirsty Band": "/events/1101256"
-  },
-  {
-    "Shotgun Jazz Band": "/events/1101336"
-  },
-  {
-    "Dominick Grillo &amp; The Frenchmen Street Allstars": "/events/1101356"
-  },
-  {
-    "Cuban Night": "/events/1098841"
-  },
-  {
-    "Preservation All-Stars ft. Branden Lewis": "/events/1096606"
-  },
-  {
-    "Preservation All-Stars ft. Branden Lewis": "/events/1096626"
-  },
-  {
-    "Dave Ferrato with Dave James, Mike Lemmler &amp; Becca Dowty": "/events/1101846"
-  }
+  { "Dr. Michael White & Original Liberty Jazz Band": "/events/1100591" },
+  { "Dr. Michael White & Original Liberty Jazz Band": "/events/1100596" },
+  { "Egyptian Lover": "/events/1102451" },
+  { "Paradise Jazz Band": "/events/1102841" },
+  { "New Orleans Cottonmouth Kings": "/events/1102826" },
+  { "Big Fun Brass Band": "/events/1102806" },
+  { "The Next Level Band": "/events/1099046" },
+  { "Preservation All-Stars ft. Mark Braud": "/events/1096681" },
+  { "Preservation All-Stars ft. Mark Braud": "/events/1096701" },
+  { "George Brown Band": "/events/1105026" },
+  { "Krewe du Vieux Fundraiser ft. The Quickening": "/events/1097656" }
 ]
