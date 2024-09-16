@@ -13,6 +13,10 @@
     min-width: 2.5rem;
 }
 
+.paginationDropdown {
+    padding: 10px 10px;
+}
+
 @media (max-width: 576px) {
     .paginationButton {
         padding: 0.2rem 0.4rem;
@@ -23,5 +27,9 @@
     .perPageButton {
         margin-left: 0;
         margin-top: 0.5rem;
+    }
+
+    .paginationDropdown {
+        padding: 5px 5px
     }
 }
