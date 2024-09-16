@@ -48,16 +48,6 @@ const Navbar = () => {
               </a>
             </li>
             {/* TODO: being USER REGISTRATION page */}
-            {/* <li className="nav-item">
-              <a
-                className="nav-link disabled"
-                aria-current="page"
-                href="#userRegistrationContainer"
-                onClick={handleClick}
-              >
-                User Registration
-              </a>
-            </li> */}
           </ul>
         </div>
         <li className={`nav-item ${styles.searchContainer}`}>
