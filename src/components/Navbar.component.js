@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Searcher from "./cards/Searcher.card";
 import styles from "./Navbar.component.module.css";
 import useScroll from "../hooks/useScroll";
 import logo from "../assets/logo.png";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js"; // Import Bootstrap JS
 
 const Navbar = () => {
   const { scrollToEvents } = useScroll();
@@ -10,8 +12,29 @@ const Navbar = () => {
   const handleClick = (e) => {
     e.preventDefault(); // Prevent default anchor link behavior
     scrollToEvents();
+    // Collapse the navbar after clicking a link
+    const navbarToggler = document.querySelector(".navbar-collapse");
+    if (navbarToggler) {
+      new window.bootstrap.Collapse(navbarToggler).hide();
+    }
   };
 
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      // find the navbar
+      const navbarToggler = document.querySelector(".navbar-collapse");
+      // Collapse the navbar after outside click
+      if (navbarToggler && !navbarToggler.contains(event.target)) {
+        new window.bootstrap.Collapse(navbarToggler).hide();
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
   return (
     <nav
       className={`navbar navbar-expand-lg navbar-light bg-light ${styles.stickyNavbar}`}
