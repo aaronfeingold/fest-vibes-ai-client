@@ -20,15 +20,11 @@ const HeroSection = () => {
   const header = useMemo(
     () => (
       <h1
-        className={`display-4 fw-bold ${showHeader ? styles.headerFadeIn : ""}`}
+        className={`display-4 fw-bold ${
+          showHeader ? styles.headerFadeIn : ""
+        } ${startFadeOut ? styles.spinnerTwinkle : ""}`}
       >
-        {spinnerVisible ? (
-          <div className={startFadeOut ? styles.spinnerTwinkle : ""}>
-            <Spinner />
-          </div>
-        ) : (
-          <Header />
-        )}
+        {spinnerVisible ? <Spinner /> : <Header />}
       </h1>
     ),
     [spinnerVisible, showHeader, startFadeOut]
