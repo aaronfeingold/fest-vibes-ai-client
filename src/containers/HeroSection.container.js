@@ -47,7 +47,9 @@ const HeroSection = () => {
   return (
     <div id="home" className={styles.heroSection} onWheel={handleWheel}>
       <div className={styles.parallax}>
-        <div className="container-sm text-center text-black headerContainer">
+        <div
+          className={`container-sm text-center text-black ${styles.headerContainer}`}
+        >
           {header}
         </div>
       </div>
