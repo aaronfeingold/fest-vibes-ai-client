@@ -61,7 +61,7 @@ const ArtistEvents = () => {
           className={`container ${styles.artistEventsContainer}`}
         >
           <div className="row justify-content-center">
-            <div className="col-12 col-md-10 col-lg-8">
+            <div className="col-12">
               <div className={`${styles.searchContainer} mb-3`}>
                 <Searcher />
               </div>
