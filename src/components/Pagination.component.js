@@ -28,7 +28,7 @@ const Pagination = ({
 
   return (
     <div className={`container-fluid ${styles.paginationComponent}`}>
-      <div className="row justify-content-center align-items-center">
+      <div className="row justify-content-center align-items-center g-z">
         <div className="col-12">
           <div className="d-flex justify-content-center">
             <button
