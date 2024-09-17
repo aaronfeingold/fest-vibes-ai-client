@@ -3,13 +3,11 @@ import Searcher from "./cards/Searcher.card";
 import styles from "./Navbar.component.module.css";
 import useScroll from "../hooks/useScroll";
 import logo from "../assets/logo.png";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js"; // Import Bootstrap JS
 
 const Navbar = () => {
-  const { scrollToEvents } = useScroll();
+  const { scrollToEvents, scrollToHome } = useScroll();
 
-  const handleClick = (e) => {
+  const handleNavItemClick = (e) => {
     e.preventDefault(); // Prevent default anchor link behavior
     scrollToEvents();
     // Collapse the navbar after clicking a link
@@ -20,11 +18,12 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    const handleOutsideClick = (event) => {
+    const handleOutsideClick = (e) => {
+      e.preventDefault();
       // find the navbar
       const navbarToggler = document.querySelector(".navbar-collapse");
       // Collapse the navbar after outside click
-      if (navbarToggler && !navbarToggler.contains(event.target)) {
+      if (navbarToggler && !navbarToggler.contains(e.target)) {
         new window.bootstrap.Collapse(navbarToggler).hide();
       }
     };
@@ -40,7 +39,14 @@ const Navbar = () => {
       className={`navbar navbar-expand-lg navbar-light bg-light ${styles.stickyNavbar}`}
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="#home">
+        <a
+          className="navbar-brand"
+          href="#homeContainer"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToHome();
+          }}
+        >
           <img
             src={logo}
             alt="AJF Live-re-Wire Logo"
@@ -65,7 +71,7 @@ const Navbar = () => {
                 className="nav-link active"
                 aria-current="page"
                 href="#artistEventsContainer"
-                onClick={handleClick}
+                onClick={handleNavItemClick}
               >
                 Artist Events
               </a>
