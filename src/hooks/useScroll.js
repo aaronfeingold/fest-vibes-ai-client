@@ -17,7 +17,6 @@ const useScroll = () => {
     scroller.scrollTo("homeContainer", {
       duration: 250,
       smooth: "easeInOutQuad",
-      offset: -99,
     });
   }, []);
 
