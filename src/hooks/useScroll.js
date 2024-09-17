@@ -12,7 +12,16 @@ const useScroll = () => {
     });
   }, []);
 
-  return { scrollToEvents };
+  // Scroll to artist events as a target
+  const scrollToHome = useCallback(function eventHandler() {
+    scroller.scrollTo("homeContainer", {
+      duration: 250,
+      smooth: "easeInOutQuad",
+      offset: -99,
+    });
+  }, []);
+
+  return { scrollToEvents, scrollToHome };
 };
 
 export default useScroll;
