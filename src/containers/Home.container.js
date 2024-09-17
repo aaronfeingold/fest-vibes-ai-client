@@ -3,6 +3,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { fetchArtistEvents } from "../services/ArtistEvents.service";
 import ArtistEvents from "./ArtistEvents.container";
 import HeroSection from "./HeroSection.container";
+import { Element } from "react-scroll";
 
 const MINIMUM_LOADING_TIME = 3500;
 const FADE_OUT_DURATION = 500;
@@ -49,13 +50,15 @@ const Home = () => {
 
   return (
     <SpinnerContext.Provider value={{ spinnerVisible, startFadeOut }}>
-      <div
-        id="homeContainer"
-        style={{ backgroundColor: "#f4f4f4", overflow: "hidden" }}
-      >
-        <HeroSection />
-        <ArtistEvents />
-      </div>
+      <Element name="homeContainer">
+        <div
+          id="homeContainer"
+          style={{ backgroundColor: "#f4f4f4", overflow: "hidden" }}
+        >
+          <HeroSection />
+          <ArtistEvents />
+        </div>
+      </Element>
     </SpinnerContext.Provider>
   );
 };
