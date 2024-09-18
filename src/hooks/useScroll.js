@@ -8,15 +8,15 @@ const useScroll = () => {
     scroller.scrollTo("artistEventsContainer", {
       duration: 250,
       smooth: "easeInOutQuad",
-      offset: -99,
+      offset: -150,
     });
   }, []);
 
   // Scroll to artist events as a target
   const scrollToHome = useCallback(function eventHandler() {
     scroller.scrollTo("homeContainer", {
-      duration: 250,
-      smooth: "easeInOutQuad",
+      duration: 100,
+      smooth: "easeInOutQuint",
     });
   }, []);
 
