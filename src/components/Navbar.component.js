@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Searcher from "./cards/Searcher.card";
 import styles from "./Navbar.component.module.css";
 import useScroll from "../hooks/useScroll";
@@ -6,8 +6,10 @@ import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const { scrollToEvents, scrollToHome } = useScroll();
+  const navbarRef = useRef(null);
 
   const handleNavItemClick = (e) => {
+    console.log("handleNavItemClick");
     e.preventDefault(); // Prevent default anchor link behavior
     scrollToEvents();
     // Collapse the navbar after clicking a link
@@ -19,12 +21,13 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleOutsideClick = (e) => {
-      e.preventDefault();
-      // find the navbar
-      const navbarToggler = document.querySelector(".navbar-collapse");
-      // Collapse the navbar after outside click
-      if (navbarToggler && !navbarToggler.contains(e.target)) {
-        new window.bootstrap.Collapse(navbarToggler).hide();
+      // find the navbar and only handle clicks outside of it
+      if (!navbarRef.current?.contains(e.target)) {
+        const navbarToggler = document.querySelector(".navbar-collapse");
+        // Collapse the navbar after outside click
+        if (navbarToggler && navbarToggler.classList.contains("show")) {
+          new window.bootstrap.Collapse(navbarToggler).hide();
+        }
       }
     };
 
