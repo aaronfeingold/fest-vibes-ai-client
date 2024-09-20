@@ -7,6 +7,7 @@ import ArtistEventsList from "../components/lists/ArtistEvents.list";
 import ArtistEvent from "../components/cards/ArtistEvent.card";
 import styles from "./ArtistEvents.container.module.css";
 import { SpinnerContext } from "../containers/Home.container";
+import Searcher from "../components/cards/Searcher.card";
 
 const ArtistEvents = () => {
   const { spinnerVisible } = useContext(SpinnerContext);
@@ -57,20 +58,27 @@ const ArtistEvents = () => {
       <Element name="artistEventsContainer">
         <div
           id="artistEventsContainer"
-          className={`container-lg ${styles.artistEventsContainer}`}
+          className={`container ${styles.artistEventsContainer}`}
         >
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            itemCount={cardCount}
-            onPageChange={handlePageChange}
-            onItemsPerPageChange={handleItemsPerPageChange}
-          />
-          <ArtistEventsList
-            apiStatus={apiStatus}
-            filterStatus={filterStatus}
-            paginatedCards={paginatedCards}
-          />
+          <div className="row justify-content-center">
+            <div className="col-12">
+              <div className={`${styles.searchContainer} mb-3`}>
+                <Searcher />
+              </div>
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                itemCount={cardCount}
+                onPageChange={handlePageChange}
+                onItemsPerPageChange={handleItemsPerPageChange}
+              />
+              <ArtistEventsList
+                apiStatus={apiStatus}
+                filterStatus={filterStatus}
+                paginatedCards={paginatedCards}
+              />
+            </div>
+          </div>
         </div>
       </Element>
     )

@@ -11,109 +11,86 @@ const Pagination = ({
   const getPageNumbers = () => {
     const pages = [];
     if (totalPages <= 3) {
-      // Show all page numbers if totalPages <= 3
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
       }
     } else {
-      // Ellipses logic
-      if (currentPage <= 3) {
-        pages.push(1, 2, 3, "...");
-      } else if (currentPage > totalPages - 3) {
-        pages.push("...", totalPages - 2, totalPages - 1, totalPages);
+      if (currentPage <= 2) {
+        pages.push(1, 2, "...");
+      } else if (currentPage > totalPages - 2) {
+        pages.push("...", totalPages - 1, totalPages);
       } else {
-        pages.push("...", currentPage - 1, currentPage, currentPage + 1, "...");
+        pages.push("...", currentPage, "...");
       }
     }
     return pages;
   };
 
   return (
-    <div className={`container-sm ${styles.paginationComponent}`}>
-      <div className="d-flex justify-content-center m-4">
-        <button
-          className={`btn btn-outline-primary mx-1`}
-          onClick={() => onPageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          Previous
-        </button>
+    <div className={`container-fluid ${styles.paginationComponent}`}>
+      <div className="row justify-content-center align-items-center g-z">
+        <div className="col-12">
+          <div className="d-flex justify-content-center">
+            <button
+              className={`btn btn-sm btn-outline-primary mx-1 ${styles.paginationButton}`}
+              onClick={() => onPageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              Prev
+            </button>
 
-        {getPageNumbers().map((page, index) => (
-          <button
-            key={index}
-            className={"btn btn-outline-primary mx-1"}
-            onClick={() => typeof page === "number" && onPageChange(page)}
-            disabled={currentPage === page || page === "..."}
-          >
-            {page}
-          </button>
-        ))}
+            {getPageNumbers().map((page, index) => (
+              <button
+                key={index}
+                className={`btn btn-sm btn-outline-primary mx-1 ${styles.paginationButton}`}
+                onClick={() => typeof page === "number" && onPageChange(page)}
+                disabled={currentPage === page || page === "..."}
+              >
+                {page}
+              </button>
+            ))}
 
-        <button
-          className="btn btn-outline-primary mx-1"
-          onClick={() => onPageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
+            <button
+              className={`btn btn-sm btn-outline-primary mx-1 ${styles.paginationButton}`}
+              onClick={() => onPageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+          </div>
+        </div>
+        <div
+          className={`col-12 col-sm-auto my-1 my-sm-2 ${styles.paginationDropdown}`}
         >
-          Next
-        </button>
-        <div className="dropdown">
-          <button
-            className="btn btn-secondary dropdown-toggle"
-            type="button"
-            id="dropdownMenuButton"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Per Page
-          </button>
-          <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li>
+          <div className="d-flex justify-content-center">
+            <div className="dropdown">
               <button
-                className="dropdown-item"
+                className={`btn btn-sm btn-outline-secondary dropdown-toggle ${styles.perPageButton}`}
                 type="button"
-                onClick={() => onItemsPerPageChange(6)}
+                id="dropdownMenuButton"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
               >
-                6
+                Per Page
               </button>
-            </li>
-            <li>
-              <button
-                className="dropdown-item"
-                type="button"
-                onClick={() => onItemsPerPageChange(10)}
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton"
               >
-                10
-              </button>
-            </li>
-            <li>
-              <button
-                className="dropdown-item"
-                type="button"
-                onClick={() => onItemsPerPageChange(20)}
-              >
-                20
-              </button>
-            </li>
-            <li>
-              <button
-                className="dropdown-item"
-                type="button"
-                onClick={() => onItemsPerPageChange(50)}
-              >
-                50
-              </button>
-            </li>
-            <li>
-              <button
-                className="dropdown-item"
-                type="button"
-                onClick={() => onItemsPerPageChange(itemCount)}
-              >
-                All
-              </button>
-            </li>
-          </ul>
+                {[6, 10, 20, 50, itemCount].map((num) => (
+                  <li key={num}>
+                    <button
+                      className="dropdown-item"
+                      type="button"
+                      onClick={() => onItemsPerPageChange(num)}
+                    >
+                      {num === itemCount ? "All" : num}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

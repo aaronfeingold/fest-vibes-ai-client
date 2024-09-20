@@ -13,7 +13,7 @@
   flex-direction: column; /* Stack elements vertically */
   /* Background image for the parallax effect */
   background-image: url("/public/images/coolBackground1.jpg");
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-position: center;
   background-repeat: repeat;
   background-size: cover;
@@ -21,8 +21,12 @@
 }
 
 .headerContainer {
-  position: relative;
-  z-index: 2;
+    position: relative;
+    z-index: 2;
+    height: 150px; /* Set a fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @keyframes twinkleAway {
@@ -52,4 +56,14 @@
 .headerFadeIn {
   animation: fadeIn 1s ease-in-out forwards;
   opacity: 0; /* Initially hidden */
+}
+
+@media (max-width: 768px) {
+    .parallax {
+        background-attachment: scroll; /* Improve performance on mobile */
+    }
+
+    .headerContainer {
+        height: 100px; /* Adjust height for mobile */
+    }
 }

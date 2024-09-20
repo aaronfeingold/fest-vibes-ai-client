@@ -50,12 +50,12 @@ const Searcher = () => {
     <div className="container-sm">
       <div className="row justify-content-center">
         <div
-          className={`input-group ${styles.inputGroup}`}
+          className={`input-group my-2 my-sm-0 ${styles.inputGroup}`}
           style={{ width: "30rem" }}
         >
           <input
             type="text"
-            className={`form-control ${styles.formControl}`}
+            className={`form-control my-2 my-sm-0 ${styles.formControl}`}
             placeholder="Search by artist name"
             aria-label="Search by artist name"
             onChange={handleQuery}
@@ -63,7 +63,7 @@ const Searcher = () => {
             value={searchTerm}
           />
           <button
-            className={`btn btn-outline-secondary ${styles.btnOutlineSecondary}`}
+            className={`btn btn-outline-success my-2 my-sm-0 ${styles.btnOutlineSecondary}`}
             type="button"
           >
             Search

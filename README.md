@@ -1,22 +1,30 @@
-## OZ-LIVE-RE-WIRE
+# AJF-LIVE-RE-WIRE-Client
 
+## Description
 This react app will scrape the livewire for music events, and list by Artist in alphabetical order.
 
-To get started, fork and clone the repository.
- 
-Next, use npm install to download dependencies.
+## Develop
+- To get started, fork and clone the repository:
+```sh
+git clone https://github.com/aaronfeingold/ajf-live-re-wire.git
+cd ajf-live-re-wire
+```
+- Configure environment variables
+```
+echo REACT_APP_DEV_ENV="development" #
+```
 
-Run npm start to view client in browser at port 3000 (details below)
+- Next, use `npm install` to download dependencies.
+```sh
+npm install # to download dependencies.
+npm start
+```
+- Runs the app in the development mode.
+- Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-For development, make sure to change URL in axiosApi.
+## Deploy
 
-Need a backend API example? Here's an express.js server:
-
-https://github.com/aaronfeingold/express-validator-proj
-
-Deployed at:
-
-https://oz-live-re-wire.netlify.app/
+https://ajf-live-re-wire.netlify.app/
 
 ## Available Scripts
 

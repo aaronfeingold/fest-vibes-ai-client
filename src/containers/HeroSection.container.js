@@ -20,15 +20,11 @@ const HeroSection = () => {
   const header = useMemo(
     () => (
       <h1
-        className={`display-4 fw-bold ${showHeader ? styles.headerFadeIn : ""}`}
+        className={`display-4 fw-bold ${
+          showHeader ? styles.headerFadeIn : ""
+        } ${startFadeOut ? styles.spinnerTwinkle : ""}`}
       >
-        {spinnerVisible ? (
-          <div className={startFadeOut ? styles.spinnerTwinkle : ""}>
-            <Spinner />
-          </div>
-        ) : (
-          <Header />
-        )}
+        {spinnerVisible ? <Spinner /> : <Header />}
       </h1>
     ),
     [spinnerVisible, showHeader, startFadeOut]
@@ -47,7 +43,9 @@ const HeroSection = () => {
   return (
     <div id="home" className={styles.heroSection} onWheel={handleWheel}>
       <div className={styles.parallax}>
-        <div className="container-sm text-center text-black headerContainer">
+        <div
+          className={`container-sm text-center text-black ${styles.headerContainer}`}
+        >
           {header}
         </div>
       </div>
