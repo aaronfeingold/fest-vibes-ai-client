@@ -32,7 +32,10 @@ const artistEventsSlice = createSlice({
     });
     builder.addCase(fetchArtistEvents.rejected, (state, action) => {
       state.apiStatus = "failed";
-      state.error = action.error.message;
+      state.error = {
+        type: action.payload.type,
+        message: action.payload.message,
+      };
     });
   },
 });
