@@ -12,7 +12,7 @@ export const fetchArtistEvents = createAsyncThunk(
           throw new Error("Network response was not ok");
         }
         const json = await response.json(); // Parse the response body as JSON
-        return json;
+        return json.data;
       } catch (error) {
         console.error("Error fetching local data.json:", error);
         throw error;
@@ -20,8 +20,7 @@ export const fetchArtistEvents = createAsyncThunk(
     }
     try {
       const response = await axiosAPI.get("/");
-      const payload = response.data;
-      return payload;
+      return response.data.data;
     } catch (error) {
       console.error("Error fetching from API:", error);
       throw error;
