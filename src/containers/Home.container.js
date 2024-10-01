@@ -25,7 +25,7 @@ const Home = () => {
     let timeoutId;
     let fadeOutTimeoutId;
 
-    if (apiStatus === "succeeded") {
+    if (apiStatus === "succeeded" || apiStatus === "failed") {
       // Wait for the minimum loading time before hiding the spinner
       const elapsedTime = Date.now() - startTime;
       const remainingTime = Math.max(0, MINIMUM_LOADING_TIME - elapsedTime);
