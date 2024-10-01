@@ -6,16 +6,17 @@ import useScroll from "../hooks/useScroll";
 import { SpinnerContext } from "../containers/Home.container";
 
 const HeroSection = () => {
-  const { spinnerVisible, startFadeOut } = useContext(SpinnerContext);
+  const { spinnerVisible, startFadeOut, apiStatus, errorMessage } =
+    useContext(SpinnerContext);
   const { scrollToEvents } = useScroll();
   const [showHeader, setShowHeader] = useState(false);
 
   // After the spinner disappears, show the header
   useEffect(() => {
-    if (!spinnerVisible) {
+    if (!spinnerVisible && apiStatus !== "failed") {
       setShowHeader(true);
     }
-  }, [spinnerVisible]);
+  }, [spinnerVisible, apiStatus]);
   // UX: Hide the spinner after a minimum loading time
   const header = useMemo(
     () => (
@@ -24,7 +25,15 @@ const HeroSection = () => {
           showHeader ? styles.headerFadeIn : ""
         } ${startFadeOut ? styles.spinnerTwinkle : ""}`}
       >
-        {spinnerVisible ? <Spinner /> : <Header />}
+        {spinnerVisible ? (
+          <Spinner />
+        ) : apiStatus === "failed" ? (
+          <span className={styles.errorMessage}>
+            {errorMessage || "Failed to load data."}
+          </span>
+        ) : (
+          <Header />
+        )}
       </h1>
     ),
     [spinnerVisible, showHeader, startFadeOut]
