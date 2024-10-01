@@ -11,10 +11,8 @@ import Searcher from "../components/cards/Searcher.card";
 
 const ArtistEvents = () => {
   const { spinnerVisible } = useContext(SpinnerContext);
-  const { artistEvents, apiStatus, filterStatus, query } = useSelector(
-    (state) => state.aes,
-    shallowEqual
-  );
+  const { artistEvents, apiStatus, filterStatus, query, errorMessage } =
+    useSelector((state) => state.aes, shallowEqual);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(6);
 
@@ -60,25 +58,33 @@ const ArtistEvents = () => {
           id="artistEventsContainer"
           className={`container ${styles.artistEventsContainer}`}
         >
-          <div className="row justify-content-center">
-            <div className="col-12">
-              <div className={`${styles.searchContainer} mb-3`}>
-                <Searcher />
-              </div>
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                itemCount={cardCount}
-                onPageChange={handlePageChange}
-                onItemsPerPageChange={handleItemsPerPageChange}
-              />
-              <ArtistEventsList
-                apiStatus={apiStatus}
-                filterStatus={filterStatus}
-                paginatedCards={paginatedCards}
-              />
+          {apiStatus === "failed" ? (
+            <div className={styles.errorContainer}>
+              <p className={styles.errorMessage}>
+                {errorMessage || "Unable to load events."}
+              </p>
             </div>
-          </div>
+          ) : (
+            <div className="row justify-content-center">
+              <div className="col-12">
+                <div className={`${styles.searchContainer} mb-3`}>
+                  <Searcher />
+                </div>
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  itemCount={cardCount}
+                  onPageChange={handlePageChange}
+                  onItemsPerPageChange={handleItemsPerPageChange}
+                />
+                <ArtistEventsList
+                  apiStatus={apiStatus}
+                  filterStatus={filterStatus}
+                  paginatedCards={paginatedCards}
+                />
+              </div>
+            </div>
+          )}
         </div>
       </Element>
     )
