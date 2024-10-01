@@ -21,6 +21,9 @@ const artistEventsSlice = createSlice({
     updateQuery(state, action) {
       state.query = action.payload;
     },
+    resetApiStatus(state, action) {
+      state.apiStatus = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchArtistEvents.pending, (state) => {
@@ -40,6 +43,7 @@ const artistEventsSlice = createSlice({
   },
 });
 
-export const { setFilterStatus, updateQuery } = artistEventsSlice.actions
+export const { resetApiStatus, setFilterStatus, updateQuery } =
+  artistEventsSlice.actions;
 export default artistEventsSlice.reducer
 
