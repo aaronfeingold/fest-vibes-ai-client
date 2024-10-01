@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext, useMemo } from "react";
 import Header from "../components/Header.component";
 import Spinner from "../components/Spinner.component";
-import styles from "./HeroSection.container.module.css";
 import useScroll from "../hooks/useScroll";
 import { SpinnerContext } from "../containers/Home.container";
+import styles from "./HeroSection.container.module.css";
 
 const HeroSection = () => {
   const { spinnerVisible, startFadeOut, apiStatus, errorMessage } =
