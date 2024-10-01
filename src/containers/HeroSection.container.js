@@ -13,7 +13,7 @@ const HeroSection = () => {
 
   // After the spinner disappears, show the header
   useEffect(() => {
-    if (!spinnerVisible && apiStatus !== "failed") {
+    if (!spinnerVisible) {
       setShowHeader(true);
     }
   }, [spinnerVisible, apiStatus]);
@@ -36,7 +36,7 @@ const HeroSection = () => {
         )}
       </h1>
     ),
-    [spinnerVisible, showHeader, startFadeOut]
+    [spinnerVisible, showHeader, startFadeOut, apiStatus, errorMessage]
   );
 
   // UX: Handle the mouse wheel changing down
