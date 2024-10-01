@@ -14,7 +14,10 @@ const Home = () => {
   const dispatch = useDispatch();
   const [spinnerVisible, setSpinnerVisible] = useState(true);
   const [startFadeOut, setStartFadeOut] = useState(false);
-  const { apiStatus } = useSelector((state) => state.aes, shallowEqual);
+  const { apiStatus, errorMessage } = useSelector(
+    (state) => state.aes,
+    shallowEqual
+  );
   const startTime = useMemo(() => Date.now(), []);
 
   useEffect(() => {
@@ -49,7 +52,9 @@ const Home = () => {
   }, [apiStatus, startTime]);
 
   return (
-    <SpinnerContext.Provider value={{ spinnerVisible, startFadeOut }}>
+    <SpinnerContext.Provider
+      value={{ spinnerVisible, startFadeOut, apiStatus, errorMessage }}
+    >
       <Element name="homeContainer">
         <div
           id="homeContainer"
