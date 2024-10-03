@@ -5,8 +5,10 @@ import useScroll from "../hooks/useScroll";
 import { SpinnerContext } from "../containers/Home.container";
 import styles from "./HeroSection.container.module.css";
 
+const errorMessage = "A problem occurred and we cannot load today's events";
+
 const HeroSection = () => {
-  const { spinnerVisible, startFadeOut, apiStatus, error } =
+  const { spinnerVisible, startFadeOut, apiStatus } =
     useContext(SpinnerContext);
   const { scrollToEvents } = useScroll();
   const [showHeader, setShowHeader] = useState(false);
@@ -28,15 +30,13 @@ const HeroSection = () => {
         {spinnerVisible ? (
           <Spinner />
         ) : apiStatus === "failed" ? (
-          <span className={styles.errorMessage}>
-            {error ? error.message : "Failed to load data."}
-          </span>
+          <span className={styles.errorMessage}>{errorMessage}</span>
         ) : (
           <Header />
         )}
       </h1>
     ),
-    [spinnerVisible, showHeader, startFadeOut, apiStatus, error]
+    [spinnerVisible, showHeader, startFadeOut, apiStatus]
   );
 
   // UX: Handle the mouse wheel changing down
