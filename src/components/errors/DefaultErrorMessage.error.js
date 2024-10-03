@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./DefaultErrorMessage.error.module.css";
 
 const DefaultErrorMessage = ({ error }) => {
   let msg;
@@ -6,10 +7,10 @@ const DefaultErrorMessage = ({ error }) => {
   if (error.message) {
     msg = error.message;
   } else {
-    msg = error[0].nestedErrors[0].msg;
+    msg = error;
   }
 
-  return <div className="errorMessage">{msg}</div>;
+  return <span className={styles.errorMessage}>{msg}</span>;
 };
 
 export default DefaultErrorMessage;
