@@ -11,7 +11,7 @@ import styles from "./ArtistEvents.container.module.css";
 
 const ArtistEvents = () => {
   const { spinnerVisible } = useContext(SpinnerContext);
-  const { artistEvents, apiStatus, filterStatus, query, error } = useSelector(
+  const { artistEvents, apiStatus, filterStatus, query } = useSelector(
     (state) => state.aes,
     shallowEqual
   );
