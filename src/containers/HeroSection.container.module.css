@@ -29,13 +29,6 @@
     justify-content: center;
 }
 
-.errorMessage {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    color: white;
-}
-
 @keyframes twinkleAway {
     0% {
       opacity: 1;
