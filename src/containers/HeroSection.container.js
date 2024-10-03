@@ -6,7 +6,7 @@ import { SpinnerContext } from "../containers/Home.container";
 import styles from "./HeroSection.container.module.css";
 
 const HeroSection = () => {
-  const { spinnerVisible, startFadeOut, apiStatus, errorMessage } =
+  const { spinnerVisible, startFadeOut, apiStatus, error } =
     useContext(SpinnerContext);
   const { scrollToEvents } = useScroll();
   const [showHeader, setShowHeader] = useState(false);
@@ -29,14 +29,14 @@ const HeroSection = () => {
           <Spinner />
         ) : apiStatus === "failed" ? (
           <span className={styles.errorMessage}>
-            {errorMessage || "Failed to load data."}
+            {error ? error.message : "Failed to load data."}
           </span>
         ) : (
           <Header />
         )}
       </h1>
     ),
-    [spinnerVisible, showHeader, startFadeOut, apiStatus, errorMessage]
+    [spinnerVisible, showHeader, startFadeOut, apiStatus, error]
   );
 
   // UX: Handle the mouse wheel changing down
