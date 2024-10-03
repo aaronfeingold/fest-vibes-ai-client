@@ -53,40 +53,32 @@ const ArtistEvents = () => {
   };
 
   return (
-    !spinnerVisible && (
+    !spinnerVisible &&
+    apiStatus !== "failed" && (
       <Element name="artistEventsContainer">
         <div
           id="artistEventsContainer"
           className={`container ${styles.artistEventsContainer}`}
         >
-          <div className="row justify-content-center"></div>
-          {apiStatus === "failed" ? (
-            <div className={styles.errorContainer}>
-              <p className={styles.errorMessage}>
-                {error ? error.message : "Unable to load events."}
-              </p>
-            </div>
-          ) : (
-            <div className="row justify-content-center">
-              <div className="col-12">
-                <div className={`${styles.searchContainer} mb-3`}>
-                  <Searcher />
-                </div>
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  itemCount={cardCount}
-                  onPageChange={handlePageChange}
-                  onItemsPerPageChange={handleItemsPerPageChange}
-                />
-                <ArtistEventsList
-                  apiStatus={apiStatus}
-                  filterStatus={filterStatus}
-                  paginatedCards={paginatedCards}
-                />
+          <div className="row justify-content-center">
+            <div className="col-12">
+              <div className={`${styles.searchContainer} mb-3`}>
+                <Searcher />
               </div>
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                itemCount={cardCount}
+                onPageChange={handlePageChange}
+                onItemsPerPageChange={handleItemsPerPageChange}
+              />
+              <ArtistEventsList
+                apiStatus={apiStatus}
+                filterStatus={filterStatus}
+                paginatedCards={paginatedCards}
+              />
             </div>
-          )}
+          </div>
         </div>
       </Element>
     )
