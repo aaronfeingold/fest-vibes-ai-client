@@ -11,8 +11,10 @@ import styles from "./ArtistEvents.container.module.css";
 
 const ArtistEvents = () => {
   const { spinnerVisible } = useContext(SpinnerContext);
-  const { artistEvents, apiStatus, filterStatus, query, errorMessage } =
-    useSelector((state) => state.aes, shallowEqual);
+  const { artistEvents, apiStatus, filterStatus, query, error } = useSelector(
+    (state) => state.aes,
+    shallowEqual
+  );
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(6);
 
@@ -57,10 +59,11 @@ const ArtistEvents = () => {
           id="artistEventsContainer"
           className={`container ${styles.artistEventsContainer}`}
         >
+          <div className="row justify-content-center"></div>
           {apiStatus === "failed" ? (
             <div className={styles.errorContainer}>
               <p className={styles.errorMessage}>
-                {errorMessage || "Unable to load events."}
+                {error ? error.message : "Unable to load events."}
               </p>
             </div>
           ) : (
