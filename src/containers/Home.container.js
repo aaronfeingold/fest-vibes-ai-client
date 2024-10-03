@@ -1,9 +1,9 @@
 import React, { createContext, useEffect, useState, useMemo } from "react";
+import { Element } from "react-scroll";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { fetchArtistEvents } from "../services/ArtistEvents.service";
 import ArtistEvents from "./ArtistEvents.container";
 import HeroSection from "./HeroSection.container";
-import { Element } from "react-scroll";
 
 const MINIMUM_LOADING_TIME = 3500;
 const FADE_OUT_DURATION = 500;
@@ -14,7 +14,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const [spinnerVisible, setSpinnerVisible] = useState(true);
   const [startFadeOut, setStartFadeOut] = useState(false);
-  const { apiStatus } = useSelector((state) => state.aes, shallowEqual);
+  const { apiStatus, error } = useSelector((state) => state.aes, shallowEqual);
   const startTime = useMemo(() => Date.now(), []);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const Home = () => {
     let timeoutId;
     let fadeOutTimeoutId;
 
-    if (apiStatus === "succeeded") {
+    if (apiStatus === "succeeded" || apiStatus === "failed") {
       // Wait for the minimum loading time before hiding the spinner
       const elapsedTime = Date.now() - startTime;
       const remainingTime = Math.max(0, MINIMUM_LOADING_TIME - elapsedTime);
@@ -49,7 +49,9 @@ const Home = () => {
   }, [apiStatus, startTime]);
 
   return (
-    <SpinnerContext.Provider value={{ spinnerVisible, startFadeOut }}>
+    <SpinnerContext.Provider
+      value={{ spinnerVisible, startFadeOut, apiStatus, error }}
+    >
       <Element name="homeContainer">
         <div
           id="homeContainer"

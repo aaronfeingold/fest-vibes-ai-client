@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext, useMemo } from "react";
 import Header from "../components/Header.component";
 import Spinner from "../components/Spinner.component";
-import styles from "./HeroSection.container.module.css";
 import useScroll from "../hooks/useScroll";
 import { SpinnerContext } from "../containers/Home.container";
+import styles from "./HeroSection.container.module.css";
 
 const HeroSection = () => {
-  const { spinnerVisible, startFadeOut } = useContext(SpinnerContext);
+  const { spinnerVisible, startFadeOut, apiStatus, error } =
+    useContext(SpinnerContext);
   const { scrollToEvents } = useScroll();
   const [showHeader, setShowHeader] = useState(false);
 
@@ -15,7 +16,7 @@ const HeroSection = () => {
     if (!spinnerVisible) {
       setShowHeader(true);
     }
-  }, [spinnerVisible]);
+  }, [spinnerVisible, apiStatus]);
   // UX: Hide the spinner after a minimum loading time
   const header = useMemo(
     () => (
@@ -24,10 +25,18 @@ const HeroSection = () => {
           showHeader ? styles.headerFadeIn : ""
         } ${startFadeOut ? styles.spinnerTwinkle : ""}`}
       >
-        {spinnerVisible ? <Spinner /> : <Header />}
+        {spinnerVisible ? (
+          <Spinner />
+        ) : apiStatus === "failed" ? (
+          <span className={styles.errorMessage}>
+            {error ? error.message : "Failed to load data."}
+          </span>
+        ) : (
+          <Header />
+        )}
       </h1>
     ),
-    [spinnerVisible, showHeader, startFadeOut]
+    [spinnerVisible, showHeader, startFadeOut, apiStatus, error]
   );
 
   // UX: Handle the mouse wheel changing down

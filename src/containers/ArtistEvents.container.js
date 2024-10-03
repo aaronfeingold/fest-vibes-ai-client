@@ -2,16 +2,16 @@ import React, { useContext, useState } from "react";
 import { Element } from "react-scroll";
 import { shallowEqual, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
+import { SpinnerContext } from "../containers/Home.container";
 import Pagination from "../components/Pagination.component";
 import ArtistEventsList from "../components/lists/ArtistEvents.list";
 import ArtistEvent from "../components/cards/ArtistEvent.card";
-import styles from "./ArtistEvents.container.module.css";
-import { SpinnerContext } from "../containers/Home.container";
 import Searcher from "../components/cards/Searcher.card";
+import styles from "./ArtistEvents.container.module.css";
 
 const ArtistEvents = () => {
   const { spinnerVisible } = useContext(SpinnerContext);
-  const { artistEvents, apiStatus, filterStatus, query } = useSelector(
+  const { artistEvents, apiStatus, filterStatus, query, error } = useSelector(
     (state) => state.aes,
     shallowEqual
   );
@@ -20,8 +20,7 @@ const ArtistEvents = () => {
 
   let cards = artistEvents.map((ae) => <ArtistEvent key={nanoid()} ae={ae} />);
 
-  // todo: handle this logic on the backend with a query param
-  // todo: could be refactored
+  // todo: if user selects sort by artist, send a query param to backend
   let sortedCards = cards.sort((a, b) =>
     Object.keys(a.props.ae) > Object.keys(b.props.ae) ? 1 : -1
   );
@@ -60,25 +59,34 @@ const ArtistEvents = () => {
           id="artistEventsContainer"
           className={`container ${styles.artistEventsContainer}`}
         >
-          <div className="row justify-content-center">
-            <div className="col-12">
-              <div className={`${styles.searchContainer} mb-3`}>
-                <Searcher />
-              </div>
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                itemCount={cardCount}
-                onPageChange={handlePageChange}
-                onItemsPerPageChange={handleItemsPerPageChange}
-              />
-              <ArtistEventsList
-                apiStatus={apiStatus}
-                filterStatus={filterStatus}
-                paginatedCards={paginatedCards}
-              />
+          <div className="row justify-content-center"></div>
+          {apiStatus === "failed" ? (
+            <div className={styles.errorContainer}>
+              <p className={styles.errorMessage}>
+                {error ? error.message : "Unable to load events."}
+              </p>
             </div>
-          </div>
+          ) : (
+            <div className="row justify-content-center">
+              <div className="col-12">
+                <div className={`${styles.searchContainer} mb-3`}>
+                  <Searcher />
+                </div>
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  itemCount={cardCount}
+                  onPageChange={handlePageChange}
+                  onItemsPerPageChange={handleItemsPerPageChange}
+                />
+                <ArtistEventsList
+                  apiStatus={apiStatus}
+                  filterStatus={filterStatus}
+                  paginatedCards={paginatedCards}
+                />
+              </div>
+            </div>
+          )}
         </div>
       </Element>
     )

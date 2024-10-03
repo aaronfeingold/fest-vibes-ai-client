@@ -21,6 +21,9 @@ const artistEventsSlice = createSlice({
     updateQuery(state, action) {
       state.query = action.payload;
     },
+    resetApiStatus(state, action) {
+      state.apiStatus = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchArtistEvents.pending, (state) => {
@@ -32,11 +35,15 @@ const artistEventsSlice = createSlice({
     });
     builder.addCase(fetchArtistEvents.rejected, (state, action) => {
       state.apiStatus = "failed";
-      state.error = action.error.message;
+      state.error = {
+        type: action.error.type,
+        message: action.error.message,
+      };
     });
   },
 });
 
-export const { setFilterStatus, updateQuery } = artistEventsSlice.actions
+export const { resetApiStatus, setFilterStatus, updateQuery } =
+  artistEventsSlice.actions;
 export default artistEventsSlice.reducer
 

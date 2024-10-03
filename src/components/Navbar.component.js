@@ -9,7 +9,6 @@ const Navbar = () => {
   const navbarRef = useRef(null);
 
   const handleNavItemClick = (e) => {
-    console.log("handleNavItemClick");
     e.preventDefault(); // Prevent default anchor link behavior
     scrollToEvents();
     // Collapse the navbar after clicking a link
