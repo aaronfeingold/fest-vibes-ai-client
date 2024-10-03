@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext, useMemo } from "react";
+import DefaultErrorMessage from "../components/errors/DefaultErrorMessage.error";
 import Header from "../components/Header.component";
 import Spinner from "../components/Spinner.component";
 import useScroll from "../hooks/useScroll";
@@ -30,7 +31,7 @@ const HeroSection = () => {
         {spinnerVisible ? (
           <Spinner />
         ) : apiStatus === "failed" ? (
-          <span className={styles.errorMessage}>{errorMessage}</span>
+          <DefaultErrorMessage error={errorMessage} />
         ) : (
           <Header />
         )}
