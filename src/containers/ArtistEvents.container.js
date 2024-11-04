@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import PropTypes from 'prop-types';
+/* eslint-disable react/prop-types */
+import React, { useContext, useState } from 'react';
 import { Element } from 'react-scroll';
 import { shallowEqual, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
@@ -85,10 +85,5 @@ const ArtistEvents = () => {
     )
   );
 };
-
-ArtistEvents.propTypes = {
-  ae: PropTypes.object.isRequired,
-};
-
 
 export default ArtistEvents;
