@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import PropTypes from 'prop-types';
 import { nanoid } from "@reduxjs/toolkit";
 import styles from "./ArtistEvent.card.module.css";
 
@@ -30,6 +31,10 @@ const ArtistEvent = ({ ae }) => {
       </div>
     </div>
   );
+};
+
+ArtistEvent.propTypes = {
+  ae: PropTypes.object.isRequired,
 };
 
 export default ArtistEvent;

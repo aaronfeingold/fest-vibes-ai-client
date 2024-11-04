@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from "./DefaultErrorMessage.error.module.css";
 
 const DefaultErrorMessage = ({ error }) => {
@@ -11,6 +12,12 @@ const DefaultErrorMessage = ({ error }) => {
   }
 
   return <span className={styles.errorMessage}>{msg}</span>;
+};
+
+DefaultErrorMessage.propTypes = {
+  error: PropTypes.shape({
+    message: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default DefaultErrorMessage;

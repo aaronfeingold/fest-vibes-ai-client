@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
-import { Element } from "react-scroll";
-import { shallowEqual, useSelector } from "react-redux";
-import { nanoid } from "@reduxjs/toolkit";
-import { SpinnerContext } from "../containers/Home.container";
-import Pagination from "../components/Pagination.component";
-import ArtistEventsList from "../components/lists/ArtistEvents.list";
-import ArtistEvent from "../components/cards/ArtistEvent.card";
-import Searcher from "../components/cards/Searcher.card";
-import styles from "./ArtistEvents.container.module.css";
+import PropTypes from 'prop-types';
+import { Element } from 'react-scroll';
+import { shallowEqual, useSelector } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
+import { SpinnerContext } from '../containers/Home.container';
+import Pagination from '../components/Pagination.component';
+import ArtistEventsList from '../components/lists/ArtistEvents.list';
+import ArtistEvent from '../components/cards/ArtistEvent.card';
+import Searcher from '../components/cards/Searcher.card';
+import styles from './ArtistEvents.container.module.css';
 
 const ArtistEvents = () => {
   const { spinnerVisible } = useContext(SpinnerContext);
@@ -84,5 +85,10 @@ const ArtistEvents = () => {
     )
   );
 };
+
+ArtistEvents.propTypes = {
+  ae: PropTypes.object.isRequired,
+};
+
 
 export default ArtistEvents;
