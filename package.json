@@ -35,7 +35,14 @@
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .js,.jsx",
     "format": "prettier --write '**/*.{js,jsx,css,html}'",
-    "format-check": "prettier --check '**/*.{js,jsx,css,html}'"
+    "format-check": "prettier --check '**/*.{js,jsx,css,html}'",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "eslintConfig": {
     "extends": [
