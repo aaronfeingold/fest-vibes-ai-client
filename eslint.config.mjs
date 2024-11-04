@@ -2,7 +2,6 @@ import globals from "globals";
 import pluginJs from "@eslint/js";
 import pluginReact from "eslint-plugin-react";
 
-
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
@@ -10,7 +9,10 @@ export default [
     languageOptions: {
       globals: {
         ...globals.browser,
-        process: true, // Define process as a global variable
+        process: true, // Allow the process global
+        require: true, // Allow the require global
+        module: true, // Allow the module global
+        __dirname: true, // Allow __dirname global
       },
       parserOptions: {
         ecmaVersion: 2021,
