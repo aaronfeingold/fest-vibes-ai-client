@@ -37,7 +37,7 @@ const HeroSection = () => {
         )}
       </h1>
     ),
-    [spinnerVisible, showHeader, startFadeOut, apiStatus]
+    [spinnerVisible, showHeader, startFadeOut, apiStatus],
   );
 
   // UX: Handle the mouse wheel changing down

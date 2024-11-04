@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from "axios";
 
 // API Gateway URL
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8000/api";

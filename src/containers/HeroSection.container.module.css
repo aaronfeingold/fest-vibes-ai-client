@@ -1,7 +1,7 @@
 .heroSection {
-    color: black;
-    height: 100vh;
-    overflow: hidden;
+  color: black;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .parallax {
@@ -21,21 +21,21 @@
 }
 
 .headerContainer {
-    position: relative;
-    z-index: 2;
-    height: 150px; /* Set a fixed height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: relative;
+  z-index: 2;
+  height: 150px; /* Set a fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes twinkleAway {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes fadeIn {
@@ -59,11 +59,11 @@
 }
 
 @media (max-width: 768px) {
-    .parallax {
-        background-attachment: scroll; /* Improve performance on mobile */
-    }
+  .parallax {
+    background-attachment: scroll; /* Improve performance on mobile */
+  }
 
-    .headerContainer {
-        height: 100px; /* Adjust height for mobile */
-    }
+  .headerContainer {
+    height: 100px; /* Adjust height for mobile */
+  }
 }

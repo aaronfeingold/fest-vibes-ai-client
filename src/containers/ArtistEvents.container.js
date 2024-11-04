@@ -13,7 +13,7 @@ const ArtistEvents = () => {
   const { spinnerVisible } = useContext(SpinnerContext);
   const { artistEvents, apiStatus, filterStatus, query } = useSelector(
     (state) => state.aes,
-    shallowEqual
+    shallowEqual,
   );
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(6);
@@ -22,7 +22,7 @@ const ArtistEvents = () => {
 
   // todo: if user selects sort by artist, send a query param to backend
   let sortedCards = cards.sort((a, b) =>
-    Object.keys(a.props.ae) > Object.keys(b.props.ae) ? 1 : -1
+    Object.keys(a.props.ae) > Object.keys(b.props.ae) ? 1 : -1,
   );
   // todo: send artist event count (and/or pages) from backend
   const cardCount = sortedCards.length;

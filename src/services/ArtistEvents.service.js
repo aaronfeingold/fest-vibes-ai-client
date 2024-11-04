@@ -12,5 +12,5 @@ export const fetchArtistEvents = createAsyncThunk(
       console.error("Error fetching from API:", error);
       throw error;
     }
-  }
+  },
 );

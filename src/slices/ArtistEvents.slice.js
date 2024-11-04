@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchArtistEvents } from '../services/ArtistEvents.service'
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchArtistEvents } from "../services/ArtistEvents.service";
 
 // set initial state of slice of store
 export const initialState = {
@@ -45,5 +45,4 @@ const artistEventsSlice = createSlice({
 
 export const { resetApiStatus, setFilterStatus, updateQuery } =
   artistEventsSlice.actions;
-export default artistEventsSlice.reducer
-
+export default artistEventsSlice.reducer;
