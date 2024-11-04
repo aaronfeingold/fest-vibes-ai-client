@@ -27,8 +27,6 @@ const ArtistEvents = () => {
   // todo: send artist event count (and/or pages) from backend
   const cardCount = sortedCards.length;
 
-  console.log(cardCount);
-
   const totalPages = Math.ceil(cardCount / itemsPerPage);
 
   // Filter logic
