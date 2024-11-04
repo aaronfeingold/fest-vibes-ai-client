@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from "./Pagination.component.module.css";
 
 const Pagination = ({
@@ -95,6 +96,14 @@ const Pagination = ({
       </div>
     </div>
   );
+};
+
+Pagination.propTypes = {
+  currentPage: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired,
+  onItemsPerPageChange: PropTypes.func,
+  itemCount: PropTypes.number,
 };
 
 export default Pagination;

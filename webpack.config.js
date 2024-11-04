@@ -1,39 +1,42 @@
 import path from "path";
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-module.exports = {
-  mode: "development", // Set to 'production' for production builds
-  entry: "./src/js/index.js", // Entry point for your JS
+export default {
+  mode: 'development',
+  entry: './src/js/index.js',
   output: {
-    filename: "index.js", // Output JS file
-    path: path.resolve(__dirname, "dist"), // Output directory
+    filename: 'index.js',
+    path: path.resolve(path.dirname(new URL(import.meta.url).pathname), 'dist'),
   },
   devServer: {
-    static: path.resolve(__dirname, "dist"),
+    static: path.resolve(
+      path.dirname(new URL(import.meta.url).pathname),
+      'dist'
+    ),
     port: 8080,
     hot: true,
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "index.css", // Output CSS file
+      filename: 'index.css',
     }),
   ],
   module: {
     rules: [
       {
-        test: /\.(scss)$/, // Process SCSS files
+        test: /\.(scss)$/,
         use: [
-          MiniCssExtractPlugin.loader, // Extract CSS into a file
-          "css-loader", // Handle @import and url() in CSS
-          "postcss-loader", // Process CSS with PostCSS
-          "sass-loader", // Compile Sass to CSS
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
         ],
       },
       {
-        test: /\.js$/, // Process JavaScript files
+        test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader", // Transpile modern JS to older versions
+          loader: 'babel-loader',
         },
       },
     ],

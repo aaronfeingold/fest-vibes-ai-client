@@ -11,7 +11,8 @@ cd ajf-live-re-wire
 ```
 - Configure environment variables
 ```
-echo REACT_APP_DEV_ENV="development" #
+REACT_APP_BASE_URL="https://XXXXX.execute-api.us-east-1.amazonaws.com/beta"
+REACT_APP_DEV_ENV="development"
 ```
 
 - Next, use `npm install` to download dependencies.
