@@ -52,7 +52,7 @@ const Navbar = () => {
           <img
             src={logo}
             alt="AJF Live-re-Wire Logo"
-            style={{ height: "40px" }}
+            style={{ height: '40px' }}
           />
         </a>
         <button
@@ -78,7 +78,7 @@ const Navbar = () => {
                 Artist Events
               </a>
             </li>
-            {/* TODO: being USER REGISTRATION page */}
+            {/* TODO: USER REGISTRATION page */}
           </ul>
         </div>
         <li className={`nav-item ${styles.searchContainer}`}>
