@@ -8,11 +8,23 @@ const Navbar = () => {
   const { scrollToEvents, scrollToHome } = useScroll();
   const navbarRef = useRef(null);
 
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    const logoLink = e.currentTarget;
+    logoLink.classList.add('active');
+    logoLink.classList.add('hover');
+    scrollToHome();
+    setTimeout(() => {
+      logoLink.classList.remove('active');
+      logoLink.classList.remove('hover');
+    }, 100); // Match the scroll duration
+  };
+
   const handleNavItemClick = (e) => {
     e.preventDefault(); // Prevent default anchor link behavior
     scrollToEvents();
     // Collapse the navbar after clicking a link
-    const navbarToggler = document.querySelector(".navbar-collapse");
+    const navbarToggler = document.querySelector('.navbar-collapse');
     if (navbarToggler) {
       new window.bootstrap.Collapse(navbarToggler).hide();
     }
@@ -22,20 +34,21 @@ const Navbar = () => {
     const handleOutsideClick = (e) => {
       // find the navbar and only handle clicks outside of it
       if (!navbarRef.current?.contains(e.target)) {
-        const navbarToggler = document.querySelector(".navbar-collapse");
+        const navbarToggler = document.querySelector('.navbar-collapse');
         // Collapse the navbar after outside click
-        if (navbarToggler && navbarToggler.classList.contains("show")) {
+        if (navbarToggler && navbarToggler.classList.contains('show')) {
           new window.bootstrap.Collapse(navbarToggler).hide();
         }
       }
     };
 
-    document.addEventListener("click", handleOutsideClick);
+    document.addEventListener('click', handleOutsideClick);
 
     return () => {
-      document.removeEventListener("click", handleOutsideClick);
+      document.removeEventListener('click', handleOutsideClick);
     };
   }, []);
+
   return (
     <nav
       className={`navbar navbar-expand-lg navbar-light bg-light ${styles.stickyNavbar}`}
@@ -44,10 +57,7 @@ const Navbar = () => {
         <a
           className="navbar-brand"
           href="#homeContainer"
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToHome();
-          }}
+          onClick={handleLogoClick}
         >
           <img
             src={logo}
