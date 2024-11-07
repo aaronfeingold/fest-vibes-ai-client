@@ -21,7 +21,7 @@ const Pagination = ({
     } else {
       // If currentPage is near the beginning, show the first few pages and "..."
       if (currentPage <= 3) {
-        pages.push(1, 2, 3, 4, '...');
+        pages.push(1, 2, 3, 4, 5, '...');
       }
       // If currentPage is near the end, show the last few pages and "..."
       else if (currentPage >= totalPages - 2) {
@@ -35,7 +35,15 @@ const Pagination = ({
       }
       // For other cases, show currentPage +/- 2, with "..." on both sides
       else {
-        pages.push('...', currentPage - 1, currentPage, currentPage + 1, '...');
+        pages.push(
+          '...',
+          currentPage - 2,
+          currentPage - 1,
+          currentPage,
+          currentPage + 1,
+          currentPage + 2,
+          '...'
+        );
       }
     }
     return pages;
