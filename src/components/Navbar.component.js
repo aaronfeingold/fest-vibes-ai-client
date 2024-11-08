@@ -10,14 +10,7 @@ const Navbar = () => {
 
   const handleLogoClick = (e) => {
     e.preventDefault();
-    const logoLink = e.currentTarget;
-    logoLink.classList.add('active');
-    logoLink.classList.add('hover');
     scrollToHome();
-    setTimeout(() => {
-      logoLink.classList.remove('active');
-      logoLink.classList.remove('hover');
-    }, 100); // Match the scroll duration
   };
 
   const handleNavItemClick = (e) => {
