@@ -8,16 +8,6 @@ const Navbar = () => {
   const { scrollToEvents, scrollToHome } = useScroll();
   const navbarRef = useRef(null);
 
-  const handleLogoClick = (e) => {
-    e.preventDefault();
-    const logoLink = e.currentTarget;
-    logoLink.classList.add('active');
-    scrollToHome();
-    setTimeout(() => {
-      logoLink.classList.remove('active');
-    }, 100); // Match the scroll duration
-  };
-
   const handleNavItemClick = (e) => {
     e.preventDefault(); // Prevent default anchor link behavior
     scrollToEvents();
@@ -55,7 +45,10 @@ const Navbar = () => {
         <a
           className="navbar-brand"
           href="#homeContainer"
-          onClick={handleLogoClick}
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToHome();
+          }}
         >
           <img
             src={logo}
