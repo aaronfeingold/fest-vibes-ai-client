@@ -12,7 +12,7 @@ const Navbar = () => {
     e.preventDefault(); // Prevent default anchor link behavior
     scrollToEvents();
     // Collapse the navbar after clicking a link
-    const navbarToggler = document.querySelector(".navbar-collapse");
+    const navbarToggler = document.querySelector('.navbar-collapse');
     if (navbarToggler) {
       new window.bootstrap.Collapse(navbarToggler).hide();
     }
@@ -22,20 +22,21 @@ const Navbar = () => {
     const handleOutsideClick = (e) => {
       // find the navbar and only handle clicks outside of it
       if (!navbarRef.current?.contains(e.target)) {
-        const navbarToggler = document.querySelector(".navbar-collapse");
+        const navbarToggler = document.querySelector('.navbar-collapse');
         // Collapse the navbar after outside click
-        if (navbarToggler && navbarToggler.classList.contains("show")) {
+        if (navbarToggler && navbarToggler.classList.contains('show')) {
           new window.bootstrap.Collapse(navbarToggler).hide();
         }
       }
     };
 
-    document.addEventListener("click", handleOutsideClick);
+    document.addEventListener('click', handleOutsideClick);
 
     return () => {
-      document.removeEventListener("click", handleOutsideClick);
+      document.removeEventListener('click', handleOutsideClick);
     };
   }, []);
+
   return (
     <nav
       className={`navbar navbar-expand-lg navbar-light bg-light ${styles.stickyNavbar}`}
@@ -52,7 +53,7 @@ const Navbar = () => {
           <img
             src={logo}
             alt="AJF Live-re-Wire Logo"
-            style={{ height: "40px" }}
+            style={{ height: '40px' }}
           />
         </a>
         <button
@@ -78,7 +79,7 @@ const Navbar = () => {
                 Artist Events
               </a>
             </li>
-            {/* TODO: being USER REGISTRATION page */}
+            {/* TODO: USER REGISTRATION page */}
           </ul>
         </div>
         <li className={`nav-item ${styles.searchContainer}`}>

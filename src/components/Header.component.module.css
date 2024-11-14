@@ -10,3 +10,60 @@
   font-family: courier;
   color: white;
 }
+
+.scrollDown {
+    width: 25px; /* Adjust width */
+    height: 25px; /* Adjust height */
+    border-left: 3px solid white; /* Adjust thickness */
+    border-bottom: 3px solid white; /* Adjust thickness */
+    transform: rotate(315deg);
+    margin: 20px auto; /* Center with spacing */
+    cursor: pointer;
+}
+
+.scrollCircle {
+    width: 50px; /* Adjust circle size */
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    border-radius: 50%; /* Makes the container a circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto; /* Center the circle horizontally */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+@media (max-width: 576px) { /* Extra small devices (phones, less than 576px) */
+    .scrollDown {
+        width: 20px; /* Adjust width */
+        height: 20px; /* Adjust height */
+        border-left: 2px solid white; /* Adjust thickness */
+        border-bottom: 2px solid white; /* Adjust thickness */
+    }
+
+    .scrollCircle {
+        width: 40px; /* Adjust circle size */
+        height: 40px;
+    }
+}
+
+@media (max-width: 768px) { /* Small devices (tablets, less than 768px) */
+    .scrollDown {
+        width: 22px; /* Adjust width */
+        height: 22px; /* Adjust height */
+        border-left: 2.5px solid white; /* Adjust thickness */
+        border-bottom: 2.5px solid white; /* Adjust thickness */
+    }
+
+    .scrollCircle {
+        width: 45px; /* Adjust circle size */
+        height: 45px;
+    }
+}
+
+
+.scrollDown:hover {
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}

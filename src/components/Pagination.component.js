@@ -11,17 +11,39 @@ const Pagination = ({
 }) => {
   const getPageNumbers = () => {
     const pages = [];
-    if (totalPages <= 3) {
+    const maxVisiblePages = 5;
+
+    if (totalPages <= maxVisiblePages) {
+      // Show all pages if totalPages is less than or equal to maxVisiblePages
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
       }
     } else {
-      if (currentPage <= 2) {
-        pages.push(1, 2, "...");
-      } else if (currentPage > totalPages - 2) {
-        pages.push("...", totalPages - 1, totalPages);
-      } else {
-        pages.push("...", currentPage, "...");
+      // If currentPage is near the beginning, show the first few pages and "..."
+      if (currentPage <= 3) {
+        pages.push(1, 2, 3, 4, 5, '...');
+      }
+      // If currentPage is near the end, show the last few pages and "..."
+      else if (currentPage >= totalPages - 2) {
+        pages.push(
+          '...',
+          totalPages - 3,
+          totalPages - 2,
+          totalPages - 1,
+          totalPages
+        );
+      }
+      // For other cases, show currentPage +/- 2, with "..." on both sides
+      else {
+        pages.push(
+          '...',
+          currentPage - 2,
+          currentPage - 1,
+          currentPage,
+          currentPage + 1,
+          currentPage + 2,
+          '...'
+        );
       }
     }
     return pages;
