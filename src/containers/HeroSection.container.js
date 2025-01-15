@@ -6,10 +6,8 @@ import useScroll from "../hooks/useScroll";
 import { SpinnerContext } from "../containers/Home.container";
 import styles from "./HeroSection.container.module.css";
 
-const errorMessage = "A problem occurred and we cannot load today's events";
-
 const HeroSection = () => {
-  const { spinnerVisible, startFadeOut, apiStatus } =
+  const { spinnerVisible, startFadeOut, apiStatus, error } =
     useContext(SpinnerContext);
   const { scrollToEvents } = useScroll();
   const [showHeader, setShowHeader] = useState(false);
@@ -25,13 +23,13 @@ const HeroSection = () => {
     () => (
       <h1
         className={`display-4 fw-bold ${
-          showHeader ? styles.headerFadeIn : ""
-        } ${startFadeOut ? styles.spinnerTwinkle : ""}`}
+          showHeader ? styles.headerFadeIn : ''
+        } ${startFadeOut ? styles.spinnerTwinkle : ''}`}
       >
         {spinnerVisible ? (
           <Spinner />
-        ) : apiStatus === "failed" ? (
-          <DefaultErrorMessage error={errorMessage} />
+        ) : apiStatus === 'failed' ? (
+          <DefaultErrorMessage error={error} />
         ) : (
           <Header />
         )}
