@@ -66,8 +66,8 @@ const Pagination = ({
               <button
                 key={index}
                 className={`btn btn-sm btn-outline-primary mx-1 ${styles.paginationButton}`}
-                onClick={() => typeof page === "number" && onPageChange(page)}
-                disabled={currentPage === page || page === "..."}
+                onClick={() => typeof page === 'number' && onPageChange(page)}
+                disabled={currentPage === page || page === '...'}
               >
                 {page}
               </button>
@@ -100,17 +100,26 @@ const Pagination = ({
                 className="dropdown-menu"
                 aria-labelledby="dropdownMenuButton"
               >
-                {[6, 10, 20, 50, itemCount].map((num) => (
+                {[6, 10, 20, 50].map((num) => (
                   <li key={num}>
                     <button
                       className="dropdown-item"
                       type="button"
-                      onClick={() => onItemsPerPageChange(num)}
+                      onClick={() => onItemsPerPageChange(this.innertext)}
                     >
-                      {num === itemCount ? "All" : num}
+                      {num}
                     </button>
                   </li>
                 ))}
+                <li key={`itemCount-${itemCount}`}>
+                  <button
+                    className="dropdown-item"
+                    type="button"
+                    onClick={() => onItemsPerPageChange(itemCount)}
+                  >
+                    All
+                  </button>
+                </li>
               </ul>
             </div>
           </div>

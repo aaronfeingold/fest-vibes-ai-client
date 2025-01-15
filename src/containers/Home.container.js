@@ -1,9 +1,9 @@
 import React, { createContext, useEffect, useState, useMemo } from "react";
 import { Element } from "react-scroll";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { fetchArtistEvents } from "../services/ArtistEvents.service";
-import ArtistEvents from "./ArtistEvents.container";
-import HeroSection from "./HeroSection.container";
+import { fetchArtistEvents } from '../reducers/ArtistEvents.reducer';
+import ArtistEvents from './ArtistEvents.container';
+import HeroSection from './HeroSection.container';
 
 const MINIMUM_LOADING_TIME = 3500;
 const FADE_OUT_DURATION = 500;
@@ -18,14 +18,14 @@ const Home = () => {
   const startTime = useMemo(() => Date.now(), []);
 
   useEffect(() => {
-    dispatch(fetchArtistEvents());
+    dispatch(fetchArtistEvents({}));
   }, [dispatch]);
 
   useEffect(() => {
     let timeoutId;
     let fadeOutTimeoutId;
 
-    if (apiStatus === "succeeded" || apiStatus === "failed") {
+    if (apiStatus === 'succeeded' || apiStatus === 'failed') {
       // Wait for the minimum loading time before hiding the spinner
       const elapsedTime = Date.now() - startTime;
       const remainingTime = Math.max(0, MINIMUM_LOADING_TIME - elapsedTime);
@@ -55,7 +55,7 @@ const Home = () => {
       <Element name="homeContainer">
         <div
           id="homeContainer"
-          style={{ backgroundColor: "#f4f4f4", overflow: "hidden" }}
+          style={{ backgroundColor: '#f4f4f4', overflow: 'hidden' }}
         >
           <HeroSection />
           <ArtistEvents />

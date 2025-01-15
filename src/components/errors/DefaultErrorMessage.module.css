@@ -1,0 +1,37 @@
+.error-container {
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 1.5rem;
+    max-width: 700px;
+    color: #fff;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 12px rgba(255, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .error-header .badge {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f8d7da;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .error-message {
+    color: #ffc0cb; /* Slightly muted pink */
+  }
+
+  .error-icon {
+    color: rgba(255, 50, 50, 0.85);
+    font-size: 1.5rem;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }

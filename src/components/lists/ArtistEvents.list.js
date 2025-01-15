@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import DefaultErrorMessage from '../errors/DefaultErrorMessage.error';
+import DefaultErrorMessage from '../errors/DefaultErrorMessage';
 import styles from './ArtistEvents.list.module.css';
 
 const ArtistEventsList = ({ apiStatus, apiErrorMessage, paginatedCards }) => (
