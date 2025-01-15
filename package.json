@@ -34,7 +34,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src/ --ignore-pattern build/,webpack.config.js --no-cache"
+    "lint": "eslint src/ --ignore-pattern build/,webpack.config.js --no-cache",
+    "lint-fix": "eslint src/ --ignore-pattern build/,webpack.config.js --no-cache --fix"
   },
   "eslintConfig": {
     "extends": [
