@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchArtistEvents } from '../reducers/ArtistEvents.reducer';
-import { ErrorTypes } from '../constants/errors';
 
 // set initial state of slice of store
 export const initialState = {
