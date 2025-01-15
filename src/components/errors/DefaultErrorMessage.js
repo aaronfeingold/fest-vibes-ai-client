@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { ErrorTypes } from '../../constants/errors';
 import './DefaultErrorMessage.module.css';
 
+const headline =
+  "Unfortunately, today's events cannot be displayed at this time.";
+
 const DefaultErrorMessage = ({ error }) => {
   const message =
     error?.message || error?.toString() || 'An unexpected error occurred';
@@ -58,9 +61,7 @@ const DefaultErrorMessage = ({ error }) => {
               </h5>
               {code && <span className="fs-6 text-dark">Code: {code}</span>}
             </div>
-            <p className="mb-0 fs-5">
-              Unfortunately, today's events cannot be displayed at this time.
-            </p>
+            <p className="mb-0 fs-5">{headline}</p>
             <p className="mb-0 fs-5 fw-bold text-danger">
               Error Message: {message}
             </p>
