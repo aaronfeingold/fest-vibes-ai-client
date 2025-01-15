@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, useMemo } from "react";
-import DefaultErrorMessage from "../components/errors/DefaultErrorMessage.error";
+import DefaultErrorMessage from '../components/errors/DefaultErrorMessage';
 import Header from "../components/Header.component";
 import Spinner from "../components/Spinner.component";
 import useScroll from "../hooks/useScroll";
