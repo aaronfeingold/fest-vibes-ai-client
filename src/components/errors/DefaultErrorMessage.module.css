@@ -25,6 +25,11 @@
     font-size: 1.5rem;
   }
 
+  a.link-primary:hover {
+    text-decoration: underline; /* Add an underline on hover */
+    color: #0056b3; /* Darker shade of blue for hover */
+  }
+
   @keyframes fadeIn {
     from {
       opacity: 0;

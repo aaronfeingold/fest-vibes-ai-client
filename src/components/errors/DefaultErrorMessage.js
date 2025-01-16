@@ -61,16 +61,30 @@ const DefaultErrorMessage = ({ error }) => {
               </h5>
               {code && <span className="fs-6 text-dark">Code: {code}</span>}
             </div>
-            <p className="mb-0 fs-5">{headline}</p>
-            <p className="mb-0 fs-5 fw-bold text-danger">
+            <p className="mb-0 fs-5 mt-4">{headline}</p>
+            {code >= 500 && (
+              <div className="d-flex flex-column align-items-center text-center mt-4">
+                <p className="mb-0 fs-6 text-muted ">
+                  The WWOZ server may be experiencing technical difficulties.
+                </p>
+                <p className="mb-0 fs-6 text-muted mt-4">
+                  Please try again later.
+                </p>
+                <p className="mb-0 fs-6 text-muted">
+                  <a
+                    href="https://wwoz.org/calendar/livewire-music"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-decoration-none link-primary fw-bold mt-3"
+                  >
+                    Visit the wwoz website for more info
+                  </a>
+                </p>
+              </div>
+            )}
+            <p className="mb-0 fs-5 mt-4 fw-bold text-danger border">
               Error Message: {message}
             </p>
-            {code >= 500 && (
-              <p className="mb-0 fs-6 text-muted">
-                The server may be experiencing technical difficulties. Please
-                try again later.
-              </p>
-            )}
           </div>
         </div>
       </div>
