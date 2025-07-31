@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import aesReducer from './ArtistEvents.slice'
+import eventsReducer from './Events.slice'
 
 const rootReducer =  combineReducers({
-  aes: aesReducer
+  events: eventsReducer
 })
 
 export default rootReducer

@@ -6,7 +6,6 @@ const Layout = ({ children }) => (
   <div>
     <Navbar />
     {children}
-    {/* todo: create footer */}
   </div>
 );
 

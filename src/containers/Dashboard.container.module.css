@@ -1,0 +1,10 @@
+.dashboardContainer {
+    padding: 2rem 1rem;
+    margin-top: 60px; /* Space for the fixed navbar */
+  }
+
+  @media (min-width: 768px) {
+    .dashboardContainer {
+      padding: 2rem;
+    }
+  }

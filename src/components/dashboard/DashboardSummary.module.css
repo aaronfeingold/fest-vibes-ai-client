@@ -1,0 +1,68 @@
+.summaryCard {
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+
+  .stat {
+    text-align: center;
+    padding: 1rem 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .stat h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    color: #333;
+  }
+
+  .stat p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0;
+  }
+
+  .refreshIndicator {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.75rem;
+    background-color: rgba(40, 167, 69, 0.1);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #28a745;
+  }
+
+  .refreshIndicator.loading {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    background-color: currentColor;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+
+  .loading .dot {
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(0.8);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.8);
+      opacity: 0.5;
+    }
+  }

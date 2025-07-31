@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setFilterStatus, updateQuery } from "../../slices/ArtistEvents.slice";
+import { setFilterStatus, updateQuery } from "../../slices/Events.slice";
 import styles from "./Searcher.card.module.css";
 import useScroll from "../../hooks/useScroll";
 

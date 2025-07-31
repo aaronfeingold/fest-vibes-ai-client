@@ -1,18 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchArtistEvents } from '../reducers/ArtistEvents.reducer';
+import { fetchEvents } from '../reducers/Events.reducer';
 
-// set initial state of slice of store
 export const initialState = {
-  apiStatus: 'loading',
-  filterStatus: null,
-  query: '',
-  error: null,
-  artistEvents: [],
-};
+    apiStatus: 'loading',
+    filterStatus: null,
+    query: '',
+    error: null,
+    events: [],
+    lastUpdated: null,
+    filters: {
+      genre: null,
+      venue: null,
+      artist: null,
+      date: null,
+      location: null,
+    },
+    sortBy: {
+      field: 'performance_time',
+      direction: 'asc'
+    }
+  };
 
-// a slice of root reducer
-const artistEventsSlice = createSlice({
-  name: 'aes',
+const eventsSlice = createSlice({
+  name: 'events',
   initialState,
   reducers: {
     setFilterStatus(state, action) {
@@ -24,6 +34,20 @@ const artistEventsSlice = createSlice({
     resetApiStatus(state, action) {
       state.apiStatus = action.payload;
     },
+    setFilter(state, action) {
+        const { filterType, value } = action.payload;
+        state.filters[filterType] = value;
+      },
+      resetFilters(state) {
+        state.filters = initialState.filters;
+      },
+      setSortBy(state, action) {
+        state.sortBy = action.payload;
+      },
+      refreshCachedData(state) {
+        // This is a placeholder that will trigger the fetchArtistEvents thunk
+        // The actual refreshing happens in the thunk
+      }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchArtistEvents.pending, (state) => {
@@ -53,6 +77,6 @@ const artistEventsSlice = createSlice({
 });
 
 export const { resetApiStatus, setFilterStatus, updateQuery } =
-  artistEventsSlice.actions;
-export default artistEventsSlice.reducer
+  eventsSlice.actions;
+export default eventsSlice.reducer
 

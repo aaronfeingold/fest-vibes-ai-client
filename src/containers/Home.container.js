@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState, useMemo } from "react";
 import { Element } from "react-scroll";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { fetchArtistEvents } from '../reducers/ArtistEvents.reducer';
+import { fetchArtistEvents } from '../reducers/Events.reducer';
 import ArtistEvents from './ArtistEvents.container';
 import HeroSection from './HeroSection.container';
 

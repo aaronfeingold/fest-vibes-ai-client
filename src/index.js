@@ -2,24 +2,24 @@ import React from 'react';
 import { createRoot } from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from "react-redux";
-import store from "./store";
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from "./store";
 import App from "./App";
+import Spinner from './components/Spinner.component';
 
-// Get the DOM element to render the app
 const container = document.getElementById("root");
 
-// Ensure the container is not null
 if (container) {
-  // Create the root
   const root = createRoot(container);
 
-  // Render the app
   root.render(
     <Provider store={store}>
-      <App />
+      <PersistGate loading={<Spinner />} persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>
   );
 } else {
-  console.error("Root container not found");
+  console.error("Root container not found"); // lol
 }
 
