@@ -1,4 +1,4 @@
-# AJF-LIVE-RE-WIRE-Client
+# Fest Vibes AI - Client
 
 ## Description
 This react app will scrape the livewire for music events, and list by Artist in alphabetical order.
